@@ -131,15 +131,17 @@ Xin/
 
 - **仓库**：https://github.com/lt2020669-eng/tattooing  
 - **远程**：`https://github.com/lt2020669-eng/tattooing.git`（分支 `main`）  
-- **工作流**：`.github/workflows/deploy-pages.yml`（push 到 `main` 时自动部署）  
-- **上线地址**（部署成功后）：https://lt2020669-eng.github.io/tattooing/
+- **方式**：**从分支部署**（根目录静态站，无需 GitHub Actions；避免工作流权限/环境导致的失败）  
+- **上线地址**：https://lt2020669-eng.github.io/tattooing/
 
-**首次需在 GitHub 开启 Pages 源为 Actions**
+**在 GitHub 上这样设置（约 30 秒）**
 
 1. 打开：https://github.com/lt2020669-eng/tattooing/settings/pages  
-2. **Build and deployment** → **Source** 选 **GitHub Actions**  
-3. 打开 **Actions** 标签页，确认工作流 **Deploy static site to GitHub Pages** 已成功跑完（绿勾）  
-4. 若几分钟内站点未更新，在 Actions 里可手动 **Re-run** 一次
+2. **Build and deployment** → **Source** 选 **Deploy from a branch**（不要选 GitHub Actions）  
+3. **Branch** 选 **main**，文件夹选 **/ (root)**，保存  
+4. 等待 1～3 分钟后再访问上线地址；若仍 404，强制刷新或无痕窗口再试  
+
+**若仍想用 Actions 部署**：仓库需 **Settings → Actions → General → Workflow permissions** 设为 **Read and write**，且 Pages 源为 GitHub Actions；静态单页站点用「从分支部署」更简单可靠。
 
 ---
 
