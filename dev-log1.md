@@ -127,6 +127,22 @@ Xin/
 
 ---
 
+## GitHub Pages 部署（2026-04-13）
+
+- **仓库**：https://github.com/lt2020669-eng/tattooing  
+- **远程**：`https://github.com/lt2020669-eng/tattooing.git`（分支 `main`）  
+- **工作流**：`.github/workflows/deploy-pages.yml`（push 到 `main` 时自动部署）  
+- **上线地址**（部署成功后）：https://lt2020669-eng.github.io/tattooing/
+
+**首次需在 GitHub 开启 Pages 源为 Actions**
+
+1. 打开：https://github.com/lt2020669-eng/tattooing/settings/pages  
+2. **Build and deployment** → **Source** 选 **GitHub Actions**  
+3. 打开 **Actions** 标签页，确认工作流 **Deploy static site to GitHub Pages** 已成功跑完（绿勾）  
+4. 若几分钟内站点未更新，在 Actions 里可手动 **Re-run** 一次
+
+---
+
 ## 下一步执行计划
 
 | 阶段 | 步骤 | 内容 | 状态 |
@@ -141,6 +157,6 @@ Xin/
 | 2.4 | 导航锚点定位 | 锚点 + 平滑滚动 | ✅ 完成 |
 | P2 | 小修复打包 | 年份 + 命名 + 清理 | ✅ 完成 |
 | **3.1** | **真实图片替换** | 建 images/ 文件夹，替换占位图 | ⬜ 待做 |
-| **3.2** | **部署上线** | Vercel / Netlify / GitHub Pages | ⬜ 待做 |
+| **3.2** | **部署上线** | GitHub Pages（代码已 push；见上文首次开启 Pages） | ✅ 已 push |
 | **3.3** | **SEO 完善** | sitemap + robots.txt + OG 标签 | ⬜ 待做 |
 | **3.4** | **数据分析** | 接入 GA4 | ⬜ 待做 |
