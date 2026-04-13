@@ -177,27 +177,18 @@
 <h2 class="text-5xl font-serif text-on-surface italic mb-4" data-i18n="locations_title">Find the Light</h2>
 <p class="text-on-surface-variant font-body" data-i18n="locations_subtitle">Where our stories come to life.</p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-<!-- Shinjuku -->
+<div class="max-w-2xl mx-auto">
 <div class="bg-surface rounded-xl overflow-hidden p-8 flex flex-col gap-8 shadow-sm">
-<div class="h-64 rounded-lg overflow-hidden bg-stone-200">
-<img class="w-full h-full object-cover" alt="stylized minimalist map illustration of Shinjuku district in Tokyo with soft earth tones and subtle landmarks" data-location="Shinjuku, Tokyo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxC2SoLFVtvXTcqiX1Hss_qzWVmhqdIAL1fHiVzzoK3Gx09eE4HpafCK3ShJgBRPZYUHJthi3IZ9FrjULjglIrftNvin_7bvD-hk0MynmltmgTBNfehux23MDujaV0pG4USf7wRHL6CZpcpQFPkI2B66fSUqI_4If6mhsHGUVDK3Ur8dPXl7ad3IwCgfMD5Ls5FzNSdCGVuJWpBXiP70AXJ9_r4yvTEhEClB_qIl6kF-S1MyP2cE2iVfEoxJLGgMO1D3x3FMy4Ald3"/>
+<div class="h-72 rounded-lg overflow-hidden bg-stone-200">
+<iframe class="w-full h-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.5!2d139.7828!3d35.7275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188f003c3bbfb9%3A0xf1d15c1fa2c41822!2sHitomi.Studio%20Coffee%20%26Tea!5e0!3m2!1sen!2sjp!4v1" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </div>
-<div>
-<h4 class="text-2xl font-serif italic text-on-surface mb-2" data-i18n="loc_shinjuku_name">Shinjuku Studio</h4>
-<p class="text-on-surface-variant font-body mb-4" data-i18n="loc_shinjuku_desc">The flagship botanical room. High ceilings, morning sun, and a garden terrace for aftercare reflection.</p>
-<span class="text-xs font-bold uppercase tracking-widest text-primary">3-12-1 Shinjuku, Tokyo</span>
-</div>
-</div>
-<!-- Shibuya -->
-<div class="bg-surface rounded-xl overflow-hidden p-8 flex flex-col gap-8 shadow-sm">
-<div class="h-64 rounded-lg overflow-hidden bg-stone-200">
-<img class="w-full h-full object-cover" alt="stylized minimalist map illustration of Shibuya district in Tokyo with soft warm beige tones" data-location="Shibuya, Tokyo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW7u5U-4xynSOm5TC9yEWiqzYzzDlOLrBivyPwbxlq6bQfxWRKTf89nPX0UCogX7breMTN6072oCHI-2t7yb6LAGCuNIQKUWtIuvz12L-C-lwOJpdoYiGcUrOw58bjxmGzbzWtd4qynt-62ymVwfmOzN1qpfTvTdDP8qGor4x8OD1ui5vTWUecl8AnaVeleiTvQJyd4sqIyx_12PUkmpRg73H4ECOxqrjK-vxHLDrF30o15zn7kRnts30_YeVVE2S7zXpb-5G0Inuc"/>
-</div>
-<div>
-<h4 class="text-2xl font-serif italic text-on-surface mb-2" data-i18n="loc_shibuya_name">Shibuya Studio</h4>
-<p class="text-on-surface-variant font-body mb-4" data-i18n="loc_shibuya_desc">Dedicated to geometric precision and minimalist linework. A quiet loft space overlooking the urban pulse.</p>
-<span class="text-xs font-bold uppercase tracking-widest text-primary">1-24-7 Shibuya, Tokyo</span>
+<div class="text-center">
+<h4 class="text-2xl font-serif italic text-on-surface mb-2" data-i18n="loc_hitomi_name">Hitomi.Studio</h4>
+<p class="text-on-surface-variant font-body mb-4" data-i18n="loc_hitomi_desc">A cozy creative space nestled in Tokyo's Taito district, where coffee aroma meets the gentle hum of tattoo machines. Walk-ins welcome — or book ahead for a dedicated session.</p>
+<a href="https://www.google.com/maps?q=Hitomi.Studio+Coffee+%26Tea,+6+Chome+Higashinippori,+Taito+City,+Tokyo+110-0003" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary hover:text-orange-900 transition-colors">
+<span class="material-symbols-outlined text-base">location_on</span>
+6 Chome Higashinippori, Taito City, Tokyo 110-0003
+</a>
 </div>
 </div>
 </div>
@@ -261,12 +252,9 @@ const i18n = {
   booking_embed_note:{ en: "Choose your preferred slot directly from our live calendar.", zh: "请直接在实时日历中选择你偏好的预约时段。" },
   locations_title:   { en: "Find the Light",   zh: "寻找光影" },
   locations_subtitle:{ en: "Where our stories come to life.", zh: "故事在这里发生。" },
-  loc_shinjuku_name: { en: "Shinjuku Studio",  zh: "新宿工作室" },
-  loc_shinjuku_desc: { en: "The flagship botanical room. High ceilings, morning sun, and a garden terrace for aftercare reflection.",
-                       zh: "旗舰植物系空间。高天花板、晨光与花园露台，让术后心灵沉淀。" },
-  loc_shibuya_name:  { en: "Shibuya Studio",   zh: "涩谷工作室" },
-  loc_shibuya_desc:  { en: "Dedicated to geometric precision and minimalist linework. A quiet loft space overlooking the urban pulse.",
-                       zh: "专注几何精度与极简线条。静谧阁楼，俯瞰城市脉动。" },
+  loc_hitomi_name:   { en: "Hitomi.Studio",    zh: "Hitomi.Studio" },
+  loc_hitomi_desc:   { en: "A cozy creative space nestled in Tokyo's Taito district, where coffee aroma meets the gentle hum of tattoo machines. Walk-ins welcome — or book ahead for a dedicated session.",
+                       zh: "坐落于东京台东区的温馨创作空间，咖啡香气与纹身机的轻柔嗡鸣交织其中。欢迎随时到访，也可提前预约专属时段。" },
   footer_tagline:    { en: "© {year} NINI. Crafted for the Sun-Drenched Soul. Every needle stroke is a word in the story of you.",
                        zh: "© {year} NINI. 为热爱阳光的灵魂而生。每一针都是你故事中的一个字。" },
   footer_privacy:    { en: "Privacy",  zh: "隐私政策" },
