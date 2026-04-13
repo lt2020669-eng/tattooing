@@ -5,14 +5,18 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>NINI | Fine-Line &amp; Botanical Tattoo Studio in Tokyo</title>
 <meta name="description" content="NINI is a boutique tattoo studio in Tokyo specializing in fine-line and botanical tattooing. Book your custom tattoo session today."/>
+<!-- Tailwind CDN: 直接在浏览器里使用 Tailwind，无需本地构建 -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind 主题配置：自定义颜色、圆角、字体、暗黑模式策略 -->
 <script id="tailwind-config">
         tailwind.config = {
+            // 使用 class 方式控制暗黑模式：当 html/body 上有 dark 类时，dark:* 生效
             darkMode: "class",
             theme: {
                 extend: {
+                    // 语义化颜色 token：后续可写 bg-primary / text-on-surface 等类名
                     "colors": {
                         "on-background": "#1c1c19",
                         "surface-dim": "#ddd9d5",
@@ -62,12 +66,14 @@
                         "on-secondary-fixed-variant": "#544336",
                         "secondary-fixed-dim": "#dbc2b0"
                     },
+                    // 统一圆角尺度，避免页面圆角风格不一致
                     "borderRadius": {
                         "DEFAULT": "1rem",
                         "lg": "2rem",
                         "xl": "3rem",
                         "full": "9999px"
                     },
+                    // 字体别名：可通过 font-headline / font-body / font-label 使用
                     "fontFamily": {
                         "headline": ["Noto Serif"],
                         "body": ["Manrope"],
@@ -77,6 +83,7 @@
             }
         }
     </script>
+<!-- 少量全局样式：补充 Tailwind 之外的基础行为 -->
 <style>
         body { font-family: 'Manrope', sans-serif; background-color: #fdf9f4; color: #1c1c19; }
         .font-serif { font-family: 'Noto Serif', serif; }
@@ -89,23 +96,28 @@
     </style>
 </head>
 <body class="bg-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
-<!-- TopNavBar -->
+<!-- 顶部导航栏 -->
 <nav class="fixed top-0 w-full z-50 bg-stone-50/80 dark:bg-stone-900/80 backdrop-blur-xl">
 <div class="flex justify-between items-center px-12 py-6 max-w-screen-2xl mx-auto">
+<!-- 品牌名链接：点击返回页面顶部，使用衬线斜体作为视觉 Logo -->
 <a href="#" class="text-2xl font-serif italic text-orange-900 dark:text-orange-100 no-underline">NINI</a>
-<div class="hidden md:flex items-center gap-10">
-<a class="text-stone-600 dark:text-stone-400 hover:text-orange-900 dark:hover:text-orange-300 transition-colors font-serif tracking-tight" href="#artists" data-i18n="nav_artists">Artists</a>
-<a class="text-stone-600 dark:text-stone-400 hover:text-orange-900 dark:hover:text-orange-300 transition-colors font-serif tracking-tight" href="#gallery" data-i18n="nav_gallery">Gallery</a>
-<a class="text-stone-600 dark:text-stone-400 hover:text-orange-900 dark:hover:text-orange-300 transition-colors font-serif tracking-tight" href="#studio" data-i18n="nav_studio">Studio</a>
-<a class="text-stone-600 dark:text-stone-400 hover:text-orange-900 dark:hover:text-orange-300 transition-colors font-serif tracking-tight" href="#booking" data-i18n="nav_booking">Booking</a><div class="relative group">
+<!-- 导航菜单容器：手机端隐藏，从 md 及以上屏幕显示为横向 flex -->
+<div class="hidden md:flex items-center gap-10
+            [&>a]:text-stone-600 dark:[&>a]:text-stone-400 [&>a:hover]:text-orange-900 dark:[&>a:hover]:text-orange-300
+            [&>a]:transition-colors [&>a]:font-serif [&>a]:tracking-tight">
+<a href="#artists" data-i18n="nav_artists">Artists</a>
+<a href="#gallery" data-i18n="nav_gallery">Gallery</a>
+<a href="#studio" data-i18n="nav_studio">Studio</a>
+<a href="#booking" data-i18n="nav_booking">Booking</a><div class="relative group">
 <button class="flex items-center gap-1 text-stone-600 dark:text-stone-400 hover:text-orange-900 dark:hover:text-orange-300 transition-colors font-serif tracking-tight text-sm uppercase">
 <span id="lang-label">EN</span>
 <span class="material-symbols-outlined text-sm">expand_more</span>
 </button>
-<div class="absolute right-0 mt-2 w-24 bg-white dark:bg-stone-900 border border-stone-100 dark:border-stone-800 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[70]">
+<div class="absolute right-0 mt-2 w-32 bg-white dark:bg-stone-900 border border-stone-100 dark:border-stone-800 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[70]">
 <div class="py-2 flex flex-col" id="lang-menu">
-<a class="px-4 py-2 text-xs font-serif text-orange-900 bg-stone-50 dark:bg-stone-800 dark:text-orange-100 cursor-pointer" onclick="setLang('en')">English</a>
-<a class="px-4 py-2 text-xs font-serif text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 hover:text-orange-900 transition-colors cursor-pointer" onclick="setLang('zh')">中文</a>
+<a class="mx-1 px-3 py-2 rounded-md text-xs font-serif text-orange-900 bg-stone-50 dark:bg-stone-800 dark:text-orange-100 cursor-pointer" onclick="setLang('en')">English</a>
+<a class="mx-1 px-3 py-2 rounded-md text-xs font-serif text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 hover:text-orange-900 transition-colors cursor-pointer" onclick="setLang('zh')">中文</a>
+<a class="mx-1 px-3 py-2 rounded-md text-xs font-serif text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 hover:text-orange-900 transition-colors cursor-pointer" onclick="setLang('ja')">日本語</a>
 </div>
 </div>
 </div>
@@ -116,7 +128,7 @@
 </div>
 </nav>
 <main class="pt-32">
-<!-- Hero / Artists Section -->
+<!-- Hero / Artists：主视觉与艺术家介绍 -->
 <section class="max-w-screen-2xl mx-auto px-12 pb-24" id="artists">
 <div class="flex flex-col items-center text-center">
 <div class="relative mb-12">
@@ -138,16 +150,16 @@
 </div>
 </div>
 </section>
-<!-- Gallery Section -->
+<!-- Gallery：作品列表（由下方 JS 动态渲染） -->
 <section class="bg-surface-container-low py-32" id="gallery">
 <div class="max-w-screen-2xl mx-auto px-12">
 <div class="flex justify-between items-end mb-12">
 <h2 class="text-5xl font-serif text-on-surface italic" data-i18n="gallery_title">The Collection</h2>
 <p class="text-on-surface-variant font-body max-w-xs text-right" data-i18n="gallery_subtitle">Selected works celebrating the delicate balance of nature and geometric precision.</p>
 </div>
-<!-- Filter Tags -->
+<!-- 分类筛选按钮容器（renderFilters() 会填充） -->
 <div class="flex flex-wrap gap-3 mb-12 overflow-x-auto pb-2" id="filter-bar"></div>
-<!-- Dynamic Gallery Grid -->
+<!-- 作品网格容器（renderGallery() 会填充） -->
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="gallery-grid"></div>
 <!-- Load More -->
 <div class="text-center mt-16" id="load-more-wrap">
@@ -158,7 +170,7 @@
 </div>
 </div>
 </section>
-<!-- Booking Section -->
+<!-- Booking：预约区（Calendly 内嵌） -->
 <section class="py-32 max-w-7xl mx-auto px-12" id="booking">
 <div class="bg-surface-container-lowest rounded-xl p-8 md:p-12">
 <div class="text-center mb-8">
@@ -170,7 +182,7 @@
 </div>
 </div>
 </section>
-<!-- Locations / Studio Section -->
+<!-- Studio：地址与地图 -->
 <section class="bg-surface-container-high py-32" id="studio">
 <div class="max-w-screen-2xl mx-auto px-12">
 <div class="text-center mb-20">
@@ -195,29 +207,31 @@
 </div>
 </section>
 </main>
-<!-- Footer -->
+<!-- 页脚 -->
 <footer class="bg-stone-100 dark:bg-stone-950 w-full py-20 px-12">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-7xl mx-auto">
 <div class="flex flex-col gap-6">
 <div class="font-serif text-lg text-orange-800 dark:text-orange-300">NINI</div>
 <p class="text-stone-500 font-sans text-sm tracking-wide leading-relaxed max-w-sm" id="footer-tagline"></p>
 </div>
-<div class="flex flex-wrap gap-x-12 gap-y-4 items-end md:justify-end">
-<a class="text-stone-500 uppercase text-xs font-bold hover:text-orange-700 dark:hover:text-orange-400 transition-colors" href="#">Instagram</a>
-<a class="text-stone-500 uppercase text-xs font-bold hover:text-orange-700 dark:hover:text-orange-400 transition-colors" href="#" data-i18n="footer_privacy">Privacy</a>
-<a class="text-stone-500 uppercase text-xs font-bold hover:text-orange-700 dark:hover:text-orange-400 transition-colors" href="#" data-i18n="footer_terms">Terms</a>
-<a class="text-stone-500 uppercase text-xs font-bold hover:text-orange-700 dark:hover:text-orange-400 transition-colors" href="#" data-i18n="footer_contact">Contact</a>
+<div class="flex flex-wrap gap-x-12 gap-y-4 items-end md:justify-end
+            [&>a]:text-stone-500 [&>a]:uppercase [&>a]:text-xs [&>a]:font-bold
+            [&>a]:transition-colors [&>a:hover]:text-orange-700 dark:[&>a:hover]:text-orange-400">
+  <a href="#">Instagram</a> 
+  <a href="#" data-i18n="footer_privacy">Privacy</a>
+  <a href="#" data-i18n="footer_terms">Terms</a>
+  <a href="#" data-i18n="footer_contact">Contact</a>
 </div>
 </div>
 </footer>
-<!-- Floating Chat -->
+<!-- 悬浮聊天按钮（当前仅视觉按钮） -->
 <div class="fixed bottom-8 right-8 z-[60]">
 <button class="bg-primary text-on-primary w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:scale-105 transition-transform">
 <span class="material-symbols-outlined text-3xl">chat_bubble</span>
 </button>
 </div>
 
-<!-- Story Modal -->
+<!-- 故事弹窗：点击作品卡片后展示详细内容 -->
 <div id="story-modal" class="fixed inset-0 z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
 <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeStory()"></div>
 <div class="relative bg-surface rounded-xl max-w-3xl w-full mx-4 max-h-[90vh] overflow-y-auto shadow-2xl transform scale-95 transition-transform duration-300" id="story-content">
@@ -230,44 +244,49 @@
 
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script>
-/* ── i18n ── */
+/* ── i18n：多语言词典与切换逻辑 ── */
 const i18n = {
-  nav_artists:       { en: "Artists",   zh: "艺术家" },
-  nav_gallery:       { en: "Gallery",   zh: "作品集" },
-  nav_studio:        { en: "Studio",    zh: "工作室" },
-  nav_booking:       { en: "Booking",   zh: "预约" },
-  btn_book_now:      { en: "Book Now",  zh: "立即预约" },
+  nav_artists:       { en: "Artists",   zh: "艺术家",  ja: "アーティスト" },
+  nav_gallery:       { en: "Gallery",   zh: "作品集",  ja: "ギャラリー" },
+  nav_studio:        { en: "Studio",    zh: "工作室",  ja: "スタジオ" },
+  nav_booking:       { en: "Booking",   zh: "预约",    ja: "予約" },
+  btn_book_now:      { en: "Book Now",  zh: "立即预约", ja: "今すぐ予約" },
   hero_desc:         { en: "A boutique sanctuary dedicated to the art of fine-line and botanical tattooing. Inspired by the interplay of light and leaves, we create permanent poetry on skin.",
-                       zh: "一间专注于细线与植物系纹身艺术的精品工作室。灵感源于光影与枝叶的交织，我们在肌肤上创作永恒的诗篇。" },
-  btn_book_session:  { en: "Book Your Session", zh: "预约体验" },
-  btn_view_portfolio:{ en: "View Portfolio",    zh: "查看作品" },
-  gallery_title:     { en: "The Collection",    zh: "作品集" },
+                       zh: "一间专注于细线与植物系纹身艺术的精品工作室。灵感源于光影与枝叶的交织，我们在肌肤上创作永恒的诗篇。",
+                       ja: "ファインラインとボタニカルタトゥーを専門とするブティックスタジオ。光と葉のインタープレイに触発され、肌の上に永遠の詩を刻みます。" },
+  btn_book_session:  { en: "Book Your Session", zh: "预约体验",  ja: "セッションを予約" },
+  btn_view_portfolio:{ en: "View Portfolio",    zh: "查看作品",  ja: "作品を見る" },
+  gallery_title:     { en: "The Collection",    zh: "作品集",    ja: "コレクション" },
   gallery_subtitle:  { en: "Selected works celebrating the delicate balance of nature and geometric precision.",
-                       zh: "精选作品，致敬自然之美与几何之精。" },
-  btn_load_more:     { en: "View More Works",   zh: "查看更多作品" },
-  gallery_view_story:{ en: "View Story",        zh: "查看故事" },
-  gallery_no_works:  { en: "No works in this category yet — stay tuned.", zh: "该分类暂无作品，敬请期待。" },
-  filter_all:        { en: "All", zh: "全部" },
-  booking_title:     { en: "Secure Your Light",      zh: "预定您的光影" },
-  booking_embed_note:{ en: "Choose your preferred slot directly from our live calendar.", zh: "请直接在实时日历中选择你偏好的预约时段。" },
-  locations_title:   { en: "Find the Light",   zh: "寻找光影" },
-  locations_subtitle:{ en: "Where our stories come to life.", zh: "故事在这里发生。" },
-  loc_hitomi_name:   { en: "Hitomi.Studio",    zh: "Hitomi.Studio" },
+                       zh: "精选作品，致敬自然之美与几何之精。",
+                       ja: "自然の美しさと幾何学的な精密さの絶妙なバランスを称える厳選作品。" },
+  btn_load_more:     { en: "View More Works",   zh: "查看更多作品", ja: "もっと見る" },
+  gallery_view_story:{ en: "View Story",        zh: "查看故事",    ja: "ストーリーを見る" },
+  gallery_no_works:  { en: "No works in this category yet — stay tuned.", zh: "该分类暂无作品，敬请期待。", ja: "このカテゴリにはまだ作品がありません。お楽しみに。" },
+  filter_all:        { en: "All", zh: "全部", ja: "すべて" },
+  booking_title:     { en: "Secure Your Light",      zh: "预定您的光影",  ja: "あなたの光を確保する" },
+  booking_embed_note:{ en: "Choose your preferred slot directly from our live calendar.", zh: "请直接在实时日历中选择你偏好的预约时段。", ja: "ライブカレンダーから直接ご希望の時間をお選びください。" },
+  locations_title:   { en: "Find the Light",   zh: "寻找光影",  ja: "光を探す" },
+  locations_subtitle:{ en: "Where our stories come to life.", zh: "故事在这里发生。", ja: "物語が生まれる場所。" },
+  loc_hitomi_name:   { en: "Hitomi.Studio",    zh: "Hitomi.Studio", ja: "Hitomi.Studio" },
   loc_hitomi_desc:   { en: "A cozy creative space nestled in Tokyo's Taito district, where coffee aroma meets the gentle hum of tattoo machines. Walk-ins welcome — or book ahead for a dedicated session.",
-                       zh: "坐落于东京台东区的温馨创作空间，咖啡香气与纹身机的轻柔嗡鸣交织其中。欢迎随时到访，也可提前预约专属时段。" },
+                       zh: "坐落于东京台东区的温馨创作空间，咖啡香气与纹身机的轻柔嗡鸣交织其中。欢迎随时到访，也可提前预约专属时段。",
+                       ja: "東京・台東区に佇む居心地よいクリエイティブスペース。コーヒーの香りとタトゥーマシンの柔らかな音が交差します。飛び込み歓迎、または事前予約も承ります。" },
   footer_tagline:    { en: "© {year} NINI. Crafted for the Sun-Drenched Soul. Every needle stroke is a word in the story of you.",
-                       zh: "© {year} NINI. 为热爱阳光的灵魂而生。每一针都是你故事中的一个字。" },
-  footer_privacy:    { en: "Privacy",  zh: "隐私政策" },
-  footer_terms:      { en: "Terms",    zh: "服务条款" },
-  footer_contact:    { en: "Contact",  zh: "联系我们" },
-  modal_inspiration: { en: "The Inspiration", zh: "创作灵感" },
-  modal_symbolism:   { en: "Symbolism",       zh: "象征意义" },
-  modal_technique:   { en: "Technique",       zh: "技法说明" },
-  modal_prev:        { en: "Prev", zh: "上一个" },
-  modal_next:        { en: "Next", zh: "下一个" },
-  btn_book_tattoo:   { en: "Book Your Tattoo Now", zh: "立即预约纹身" },
+                       zh: "© {year} NINI. 为热爱阳光的灵魂而生。每一针都是你故事中的一个字。",
+                       ja: "© {year} NINI. 太陽に満ちた魂のために。すべての針の一刺しが、あなたの物語の一言。" },
+  footer_privacy:    { en: "Privacy",  zh: "隐私政策",  ja: "プライバシー" },
+  footer_terms:      { en: "Terms",    zh: "服务条款",  ja: "利用規約" },
+  footer_contact:    { en: "Contact",  zh: "联系我们",  ja: "お問い合わせ" },
+  modal_inspiration: { en: "The Inspiration", zh: "创作灵感",  ja: "インスピレーション" },
+  modal_symbolism:   { en: "Symbolism",       zh: "象征意义",  ja: "シンボリズム" },
+  modal_technique:   { en: "Technique",       zh: "技法说明",  ja: "テクニック" },
+  modal_prev:        { en: "Prev", zh: "上一个", ja: "前へ" },
+  modal_next:        { en: "Next", zh: "下一个", ja: "次へ" },
+  btn_book_tattoo:   { en: "Book Your Tattoo Now", zh: "立即预约纹身", ja: "今すぐタトゥーを予約" },
 };
 
+// 记住用户上次选择的语言；首次访问默认英文
 let currentLang = localStorage.getItem('nini-lang') || 'en';
 
 function t(key) {
@@ -277,24 +296,33 @@ function t(key) {
 }
 
 function applyLang() {
+  // 把 data-i18n 元素统一替换为当前语言文本
   document.querySelectorAll('[data-i18n]').forEach(el => {
     el.textContent = t(el.dataset.i18n);
   });
+  // Footer 文案里包含 {year} 占位符，按当前年份动态替换
   const ftEl = document.getElementById('footer-tagline');
   if (ftEl) ftEl.textContent = t('footer_tagline').replace('{year}', new Date().getFullYear());
-  document.getElementById('lang-label').textContent = currentLang === 'zh' ? '中文' : 'EN';
+  // 顶部语言按钮显示文本映射（语言代码 -> 标签）
+  const langLabels = { zh: '中文', ja: '日本語', en: 'EN' };
+  document.getElementById('lang-label').textContent = langLabels[currentLang] || 'EN';
+  // 同步下拉菜单选中态：当前语言高亮，其他语言保持可悬停样式
   document.querySelectorAll('#lang-menu a').forEach(a => {
+    // 从 onclick="setLang('xx')" 中提取语言代码
     const aLang = a.getAttribute('onclick')?.match(/'(\w+)'/)?.[1];
     if (aLang === currentLang) {
-      a.className = 'px-4 py-2 text-xs font-serif text-orange-900 bg-stone-50 dark:bg-stone-800 dark:text-orange-100 cursor-pointer';
+      a.className = 'mx-2 px-3 py-2 rounded-md text-xs font-serif text-orange-900 bg-stone-50 dark:bg-stone-800 dark:text-orange-100 cursor-pointer';
     } else {
-      a.className = 'px-4 py-2 text-xs font-serif text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 hover:text-orange-900 transition-colors cursor-pointer';
+      a.className = 'mx-2 px-3 py-2 rounded-md text-xs font-serif text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 hover:text-orange-900 transition-colors cursor-pointer';
     }
   });
-  document.documentElement.lang = currentLang === 'zh' ? 'zh-CN' : 'en';
+  // 设置 <html lang>，便于浏览器/SEO/读屏工具识别当前语言
+  const docLangs = { zh: 'zh-CN', ja: 'ja', en: 'en' };
+  document.documentElement.lang = docLangs[currentLang] || 'en';
 }
 
 function setLang(lang) {
+  // 切语言后，除文案外还要重绘筛选按钮、画廊和已打开的弹窗内容
   currentLang = lang;
   localStorage.setItem('nini-lang', lang);
   applyLang();
@@ -310,7 +338,7 @@ function scrollToBooking() {
   }
 }
 
-/* ── Stories Data ── */
+/* ── Stories Data：作品数据源 ── */
 const stories = [
   {
     title: "Fern Whisper", tag: "Botanical · Fine Line", category: "botanical", featured: true,
@@ -338,7 +366,7 @@ const stories = [
   }
 ];
 
-/* ── Gallery Engine ── */
+/* ── Gallery Engine：筛选、分页、渲染 ── */
 const PAGE_SIZE = 6;
 let currentFilter = 'all';
 let visibleCount = PAGE_SIZE;
@@ -355,6 +383,7 @@ function getCategories() {
 }
 
 function renderFilters() {
+  // 根据分类数组动态生成筛选按钮
   const bar = document.getElementById('filter-bar');
   bar.innerHTML = getCategories().map(cat => {
     const label = cat === 'all' ? t('filter_all') : cat.charAt(0).toUpperCase() + cat.slice(1);
@@ -364,6 +393,7 @@ function renderFilters() {
 }
 
 function renderGallery() {
+  // 按当前筛选 + 可见数量渲染卡片
   const filtered = getFilteredStories();
   const toShow = filtered.slice(0, visibleCount);
   const grid = document.getElementById('gallery-grid');
@@ -387,6 +417,7 @@ function renderGallery() {
   const btn = document.getElementById('load-more-btn');
   const wrap = document.getElementById('load-more-wrap');
 
+  // 已全部显示时隐藏“加载更多”按钮
   if (filtered.length <= visibleCount) {
     btn.style.display = 'none';
     const allWord = currentLang === 'zh' ? '件作品' : ' works';
@@ -402,6 +433,7 @@ function renderGallery() {
       : `Showing ${toShow.length} of ${filtered.length} works`;
   }
 
+  // 当前分类无数据时显示空状态
   if (filtered.length === 0) {
     grid.innerHTML = `<p class="col-span-full text-center text-on-surface-variant font-body py-20 text-lg">${t('gallery_no_works')}</p>`;
     wrap.style.display = 'none';
@@ -422,7 +454,7 @@ function loadMore() {
   renderGallery();
 }
 
-/* ── Story Modal ── */
+/* ── Story Modal：作品详情弹窗 ── */
 function renderModal(index) {
   const s = stories[index];
   const filtered = getFilteredStories();
@@ -506,13 +538,14 @@ function navStory(dir) {
 }
 
 document.addEventListener('keydown', function(e) {
+  // 弹窗打开时支持键盘操作：Esc 关闭，左右箭头切换
   if (currentStoryIndex === -1) return;
   if (e.key === 'Escape') closeStory();
   if (e.key === 'ArrowLeft') navStory(-1);
   if (e.key === 'ArrowRight') navStory(1);
 });
 
-/* ── Init ── */
+/* ── Init：页面首次加载执行 ── */
 applyLang();
 renderFilters();
 renderGallery();
