@@ -1,6 +1,7 @@
 {
   "nav_artists": { "en": "Artists", "zh": "艺术家", "ja": "アーティスト" },
   "nav_gallery": { "en": "Gallery", "zh": "作品集", "ja": "ギャラリー" },
+  "nav_price": { "en": "Price", "zh": "价格", "ja": "料金" },
   "nav_studio": { "en": "Studio", "zh": "工作室", "ja": "スタジオ" },
   "nav_booking": { "en": "Booking", "zh": "预约", "ja": "予約" },
   "btn_book_now": { "en": "Book Now", "zh": "立即预约", "ja": "今すぐ予約" },
@@ -28,6 +29,52 @@
     "ja": "自然の美しさと幾何学的な精密さの絶妙なバランスを称える厳選作品。"
   },
   "btn_load_more": { "en": "View More Works", "zh": "查看更多作品", "ja": "もっと見る" },
+  "price_title": { "en": "Pricing", "zh": "价格说明", "ja": "料金案内" },
+  "price_subtitle": {
+    "en": "These are our usual reference prices. Final quotes may vary depending on design details and placement.",
+    "zh": "以下为常规参考价格，最终报价会根据设计细节与纹身位置确认。",
+    "ja": "以下は通常の参考料金です。最終的なお見積もりは、デザインの細部や施術部位に応じて確定します。"
+  },
+  "price_item_1_title": {
+    "en": "Up to 5cm",
+    "zh": "5cm 以内",
+    "ja": "5cm 以内"
+  },
+  "price_item_1_body": {
+    "en": "20,000 JPY",
+    "zh": "20,000 日元",
+    "ja": "20,000円"
+  },
+  "price_item_2_title": {
+    "en": "Up to 10cm",
+    "zh": "10cm 以内",
+    "ja": "10cm 以内"
+  },
+  "price_item_2_body": {
+    "en": "40,000 JPY",
+    "zh": "40,000 日元",
+    "ja": "40,000円"
+  },
+  "price_item_3_title": {
+    "en": "Over 10cm",
+    "zh": "超过 10cm",
+    "ja": "10cm 超"
+  },
+  "price_item_3_body": {
+    "en": "Quoted after consultation",
+    "zh": "需另行沟通报价",
+    "ja": "別途ご相談のうえお見積もり"
+  },
+  "price_note": {
+    "en": "If you are unsure about size or placement, feel free to book a consultation first.",
+    "zh": "如果你还不确定尺寸或位置，欢迎先预约咨询。",
+    "ja": "サイズや部位に迷っている場合も、まずはお気軽にご相談ください。"
+  },
+  "price_cta": {
+    "en": "Open Booking Page",
+    "zh": "打开预约页面",
+    "ja": "予約ページを開く"
+  },
   "gallery_view_story": { "en": "View Story", "zh": "查看故事", "ja": "ストーリーを見る" },
   "gallery_no_works": {
     "en": "No works in this category yet — stay tuned.",
@@ -35,22 +82,117 @@
     "ja": "このカテゴリにはまだ作品がありません。お楽しみに。"
   },
   "filter_all": { "en": "All", "zh": "全部", "ja": "すべて" },
-  "filter_character": { "en": "Character", "zh": "人物", "ja": "人物" },
+  "filter_character": { "en": "Character", "zh": "字", "ja": "文字" },
   "filter_life": { "en": "Life", "zh": "生活", "ja": "ライフ" },
   "filter_other": { "en": "Other", "zh": "其他", "ja": "その他" },
+  "care_title": {
+    "en": "Before & Aftercare",
+    "zh": "纹身前后注意事项",
+    "ja": "施術前後のご案内"
+  },
+  "care_subtitle": {
+    "en": "A few simple steps before and after your session can make healing smoother and help your tattoo settle beautifully.",
+    "zh": "在预约前后做好一些简单准备，可以让纹身过程更顺利，也让后续恢复更稳定、更漂亮。",
+    "ja": "施術の前後に少し気をつけるだけで、当日の流れがよりスムーズになり、タトゥーもきれいに落ち着きやすくなります。"
+  },
+  "care_before_title": {
+    "en": "Before You Book",
+    "zh": "术前注意事项",
+    "ja": "施術前の注意事項"
+  },
+  "care_before_1": {
+    "en": "Get a full night's sleep and eat well before your appointment.",
+    "zh": "预约前请尽量保证充足睡眠，并正常进食。",
+    "ja": "ご予約前日はしっかり睡眠をとり、当日も食事を済ませてお越しください。"
+  },
+  "care_before_2": {
+    "en": "Avoid alcohol the day before, and limit caffeine right before the session.",
+    "zh": "前一天避免饮酒，纹身前也尽量少摄入过量咖啡因。",
+    "ja": "前日の飲酒は避け、施術直前のカフェイン摂取も控えめにしてください。"
+  },
+  "care_before_3": {
+    "en": "Do not tattoo on sunburned, irritated, or freshly injured skin.",
+    "zh": "如皮肤有晒伤、发炎、过敏或新伤口，请不要安排纹身。",
+    "ja": "日焼け、炎症、かぶれ、できたての傷がある部位への施術はお控えください。"
+  },
+  "care_before_4": {
+    "en": "Wear comfortable clothing that gives easy access to the tattoo area.",
+    "zh": "请穿着舒适、方便暴露纹身部位的衣物。",
+    "ja": "施術部位を出しやすい、ゆったりした服装でお越しください。"
+  },
+  "care_before_5": {
+    "en": "Please tell us in advance if you have allergies, skin conditions, or special healing concerns.",
+    "zh": "如果你有过敏史、皮肤问题或特殊恢复顾虑，请提前告知我们。",
+    "ja": "アレルギー、皮膚疾患、回復面でのご不安がある場合は事前にご相談ください。"
+  },
+  "care_after_title": {
+    "en": "After Your Session",
+    "zh": "术后护理",
+    "ja": "施術後のケア"
+  },
+  "care_after_1": {
+    "en": "Keep the tattoo clean and follow the wrapping guidance from your artist.",
+    "zh": "请保持纹身部位清洁，并按照纹身师说明处理包膜或覆盖物。",
+    "ja": "タトゥー部位を清潔に保ち、ラップや保護材についてはアーティストの案内に従ってください。"
+  },
+  "care_after_2": {
+    "en": "Wash gently with lukewarm water and mild soap, then pat dry.",
+    "zh": "用温水和温和清洁用品轻柔清洗，再轻拍擦干。",
+    "ja": "ぬるま湯と低刺激の洗浄料でやさしく洗い、こすらず軽く押さえて乾かしてください。"
+  },
+  "care_after_3": {
+    "en": "Apply a thin layer of recommended aftercare cream without over-moisturizing.",
+    "zh": "薄涂推荐的护理霜即可，避免过度厚涂或长时间闷住皮肤。",
+    "ja": "推奨されたアフターケアクリームを薄く塗り、塗りすぎないようにしてください。"
+  },
+  "care_after_4": {
+    "en": "Avoid pools, hot baths, saunas, and intense sun exposure while healing.",
+    "zh": "恢复期间请避免泳池、泡澡、桑拿以及强烈日晒。",
+    "ja": "治癒中はプール、長風呂、サウナ、強い日差しを避けてください。"
+  },
+  "care_after_5": {
+    "en": "Do not scratch or pick at flakes; let the skin heal naturally.",
+    "zh": "结痂或起皮时不要抓挠、抠撕，让皮肤自然恢复。",
+    "ja": "かさぶたや皮むけは無理にはがさず、自然に回復させてください。"
+  },
+  "care_note": {
+    "en": "These are general guidelines for most appointments. If your design, placement, or skin condition needs extra care, we will walk you through it personally.",
+    "zh": "以上是大多数预约适用的通用建议。如果你的图案、部位或皮肤状态需要额外护理，我们会再根据你的情况单独说明。",
+    "ja": "上記は多くの施術に共通する基本ガイドです。デザイン、部位、肌状態に応じて追加のご案内が必要な場合は、個別に丁寧にお伝えします。"
+  },
+  "care_cta": {
+    "en": "Open Booking Page",
+    "zh": "打开预约页面",
+    "ja": "予約ページを開く"
+  },
   "booking_title": { "en": "booking", "zh": "预定", "ja": "予約" },
+  "booking_pre_note": {
+    "en": "Before booking, please review the care notes above and let us know if you have any special concerns.",
+    "zh": "预约前请先阅读上方注意事项，如有特殊情况也欢迎提前告诉我们。",
+    "ja": "ご予約前に上記のご案内をご確認いただき、ご不安な点があれば事前にお知らせください。"
+  },
   "booking_embed_note": {
-    "en": "Choose your preferred slot directly from our live calendar.",
-    "zh": "请直接在实时日历中选择你偏好的预约时段。",
-    "ja": "ライブカレンダーから直接ご希望の時間をお選びください。"
+    "en": "Open our booking page to view live availability and choose the session that fits you best.",
+    "zh": "请打开预约页面查看实时可约时段，并选择最适合你的预约类型。",
+    "ja": "予約ページを開いて空き状況を確認し、ご希望に合うセッションをお選びください。"
+  },
+  "booking_open_note": {
+    "en": "You will be taken to our secure booking page in a new tab, where you can review availability and confirm your appointment.",
+    "zh": "点击后会在新标签页打开预约页面，你可以在那里查看可约时间并完成预约确认。",
+    "ja": "クリックすると新しいタブで予約ページが開き、空き状況の確認と予約確定を行えます。"
+  },
+  "booking_open_cta": {
+    "en": "Open Booking Page",
+    "zh": "打开预约页面",
+    "ja": "予約ページを開く"
   },
   "locations_title": { "en": "Find the Light", "zh": "寻找光影", "ja": "光を探す" },
   "locations_subtitle": { "en": "Where our stories come to life.", "zh": "故事在这里发生。", "ja": "物語が生まれる場所。" },
   "loc_hitomi_name": { "en": "Hitomi.Studio", "zh": "Hitomi.Studio", "ja": "Hitomi.Studio" },
   "loc_hitomi_desc": {
-    "en": "A cozy creative space nestled in Tokyo's Taito district, where coffee aroma meets the gentle hum of tattoo machines. Walk-ins welcome — or book ahead for a dedicated session.",
-    "zh": "坐落于东京台东区的温馨创作空间，咖啡香气与纹身机的轻柔嗡鸣交织其中。欢迎随时到访，也可提前预约专属时段。",
-    "ja": "東京・台東区に佇む居心地よいクリエイティブスペース。コーヒーの香りとタトゥーマシンの柔らかな音が交差します。飛び込み歓迎、または事前予約も承ります。"
+    "en": "A cozy creative space nestled in Tokyo's Taito district, where the aroma of coffee meets the gentle hum of tattoo machines. To ensure availability, please contact us and book in advance before visiting. If you arrive without a prior appointment, we may not be able to accommodate a same-day session.",
+    "zh": "坐落于东京台东区的温馨创作空间，咖啡香气与纹身机的轻柔嗡鸣交织其中。为确保能够安排施作，请提前预约并先与我们联系确认；未预约来店时，当日可能无法接待。",
+    "ja": "東京・台東区に佇む居心地のよいクリエイティブスペース。コーヒーの香りとタトゥーマシンの柔らかな音が交差します。施術をご希望の方は、ご来店前に事前のご予約とご連絡をお願いいたします。ご予約なしでお越しの場合、当日の施術をご案内できないことがあります。"
   },
   "footer_tagline": {
     "en": "© {year} NINI. Crafted for the Sun-Drenched Soul. Every needle stroke is a word in the story of you.",
@@ -62,5 +204,5 @@
   "footer_contact": { "en": "Contact", "zh": "联系我们", "ja": "お問い合わせ" },
   "modal_prev": { "en": "Prev", "zh": "上一个", "ja": "前へ" },
   "modal_next": { "en": "Next", "zh": "下一个", "ja": "次へ" },
-  "btn_book_tattoo": { "en": "Book Your Tattoo Now", "zh": "立即预约纹身", "ja": "今すぐタトゥーを予約" }
+  "btn_book_tattoo": { "en": "Open Booking Page", "zh": "打开预约页面", "ja": "予約ページを開く" }
 }

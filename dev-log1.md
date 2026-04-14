@@ -6,110 +6,202 @@
 
 ---
 
-## 本次已确认架构
+## 当前真实架构
 
 ### 内容与配置拆分（已完成）
 
-- 画廊数据已从页面内联迁移到 `data/stories.json`
-- 多语言词典已从页面内联迁移到 `data/i18n.json`
-- 页面初始化顺序：先加载 `i18n`，再加载 `stories`，再渲染 UI
+- 页面框架文案：`data/i18n.json`
+- 作品结构数据：`data/stories.json`
+- 作品三语内容：`data/storieslanguage.json`
+- 页面初始化顺序：
+  - 先加载 `i18n`
+  - 再加载 `stories`
+  - 再加载 `storieslanguage`
+  - 最后渲染导航、筛选、画廊与弹窗
 
-### 画廊模型（当前）
+### 画廊数据模型（当前实际使用）
 
 - 分类固定三类（内部值）：
   - `character`
   - `life`
   - `other`
-- 筛选栏文案通过 i18n 映射：
-  - `filter_character`
-  - `filter_life`
-  - `filter_other`
-- `stories` 单条结构（当前实际使用）：
-  - `title`
-  - `tag`
+- `data/stories.json` 单条结构：
+  - `id`
   - `category`
   - `featured`
   - `img`
-  - `hook`
-  - `content`
+  - `modal_object_position`（可选）
+  - `card_object_position`（可选）
+- `data/storieslanguage.json` 单条结构：
+  - `title.{en,zh,ja}`
+  - `tag.{en,zh,ja}`
+  - `hook.{en,zh,ja}`
+  - `content.{en,zh,ja}`
 
-### 弹窗内容模型（已改）
+### 弹窗与图片显示模型（当前）
 
 - 旧模型 `background/symbolism/technique` 已并为单字段 `content`
-- 弹窗中 `content` 会按空行自动分段显示
-- 已取消段落图标与段落标题（纯正文分段）
+- 弹窗正文按空行自动分段显示
+- 已取消自动段落图标与段落标题，保留纯正文分段
+- 支持单条作品图片焦点微调：
+  - `modal_object_position`：控制弹窗主图裁切焦点
+  - `card_object_position`：控制画廊卡片主图裁切焦点
 
 ---
 
-## 本轮主要变更记录
+## 最近已完成的关键更新
 
-### 1) SEO 与 Hero 文案
+### 1) 三语故事内容已补齐
 
-- `meta description` 已改为精简版品牌表达
-- Hero 区新增长文故事段（由 i18n 控制）
+- `storieslanguage.json` 已覆盖所有作品的 `title/tag/hook/content`
+- 当前支持：
+  - 英文 `en`
+  - 中文 `zh`
+  - 日文 `ja`
+- 画廊卡片与弹窗均通过 `getLocalizedStoryField()` 读取三语内容
+- 当前内容校验结果：
+  - `Errors: 0`
+  - `Warnings: 0`
 
-### 2) 分类体系迁移
+### 2) 导航与页面结构更新
 
-- 旧分类（`botanical/geometric/celestial`）迁移到新分类体系
-- 分类按钮由“首字母大写”改为 i18n 显示
+- 顶部导航已调整为：
+  - `Artists`
+  - `Gallery`
+  - `Price`
+  - `Booking`
+  - `Studio`
+- 已新增 `#price` 锚点 section
+- `#price` 放置在 `#gallery` 与 `#booking` 之间，更符合用户决策路径
 
-### 3) 数据源扩展
+### 3) Price 区块（已上线）
 
-- 已批量把本地素材写入 `data/stories.json`
-  - `image/Life/*`
-  - `image/Character/*`
-  - `image/Other/*`
-- 当前很多条目采用“先占位后补文案”的方式（`title/hook/content` 部分为空）
+- 已新增简洁说明式价格区块
+- 当前采用 Version A 结构：
+  - `5cm` 以内：`20,000 日元`
+  - `10cm` 以内：`40,000 日元`
+  - 超过 `10cm`：另行沟通报价
+- `Price` 区块文案已写入 `data/i18n.json`
+- 导航 `nav_price` 已接入三语切换
 
-### 4) 校验器建设
+### 4) 图片裁切可维护性增强
 
-- 新增 `validate-content.mjs`
-- 覆盖校验：
-  - `i18n` key 完整性
-  - `stories` 字段完整性
-  - 分类合法性（仅允许 `character/life/other`）
-  - 图片路径存在性（本地）
-- 使用说明：`README-content-validation.md`
+- 为个别需要微调的图片引入可选焦点字段，避免全局改样式影响全部作品
+- 当前已使用：
+  - `be-yourself`：`modal_object_position`
+  - `swallows-introspective-life-stream`：`modal_object_position`
+  - `i-love-you-and-you-tamed-me`：`card_object_position`
+
+### 5) 注释与可维护性补充
+
+- `renderGallery()` 关键逻辑已补充中文注释
+- `renderModal()` 及筛选/初始化相关逻辑已补充中文注释
+- 当前更适合后续继续做内容型维护，而不是再把数据写回页面内联
 
 ---
 
 ## 当前状态与注意事项
 
-### 当前存在的“预期中”报错
+### 当前校验状态
 
-- 因为大量作品条目仍是占位状态，校验器会报：
-  - `title/hook/content` 为空
-- 这是当前“先挂图后填文案”流程的自然结果，不是程序异常
+- `node validate-content.mjs` 当前结果为：
+  - `Errors: 0`
+  - `Warnings: 0`
+- 说明当前：
+  - i18n key 完整
+  - 图片路径有效
+  - `stories` / `storieslanguage` 结构一致
+  - 三语数据在当前规则下已全部通过
 
-### 已知风险
+### 当前仍需注意的点
 
-- 数据条目较多且手工录入，容易出现重复/空值/路径拼写问题
-- 目前故事文本多为英文单语，切换到中文/日文时正文不会自动本地化
+- `storieslanguage.json` 中文案量较大，后续继续维护时要避免手工修改导致：
+  - JSON 格式错误
+  - 多语言 key 不一致
+  - 段落换行被误删
+- `stories.json` 目前已是“结构层”文件，不应再把 `title/tag/hook/content` 放回这里
+- 图片焦点字段应按“单条作品微调”的原则使用，避免演变成大量全局样式分叉
+
+### 页脚占位链接待办（项目管理清单）
+
+当前页脚的社媒与联系入口已完成首轮接线：
+
+- `Instagram`
+- `TikTok`
+- `Contact`
+- `邮箱：ninitattooing@gmail.com`
+
+当前仍保留为后续待办的入口：
+
+- `Privacy`
+- `Terms`
+
+当前页脚状态如下：
+
+- `Instagram`：已接入真实账号主页
+- `TikTok`：已接入真实账号主页
+- `Contact`：已改为联系入口，内含 Instagram / TikTok / 邮箱
+- `Privacy`：暂未接入真实目标
+- `Terms`：暂未接入真实目标
+
+#### 待办项
+
+- `Done`：`Instagram` 已接入真实社媒主页链接
+- `Done`：`TikTok` 已接入真实社媒主页链接
+- `Done`：`Contact` 已升级为联系入口，聚合 Instagram / TikTok / 邮箱
+- `P2`：补充 `Privacy` 的真实目标
+  - 可选：独立 `privacy.html`
+  - 可选：站内独立 section
+- `P2`：补充 `Terms` 的真实目标
+  - 可选：独立 `terms.html`
+  - 可选：站内独立 section
+
+#### 当前影响评估
+
+- 视觉层面：页脚结构更完整，社媒与联系路径更清晰
+- 交互层面：用户现在可以直接进入 Instagram / TikTok，或通过 Contact 找到邮箱
+- 上线层面：核心社媒与联系入口已经具备可用性，剩余主要是合规页面补齐
+
+#### 处理策略建议
+
+- 短期策略：保持当前社媒/联系入口方案，优先准备 `Privacy` / `Terms`
+- 中期策略：在正式公开推广前补齐合规页面
+- 保守策略：如果短期仍不准备补这些页面，可暂时隐藏 `Privacy` / `Terms`，减少占位感
 
 ---
 
 ## 当前正确的“新增作品”方式
 
-在 `data/stories.json` 追加对象（不要再改 `index.html` 里的内联数据）：
+### 第一步：在 `data/stories.json` 追加结构项
 
 ```json
 {
-  "title": "",
-  "tag": "Life",
+  "id": "new-story-id",
   "category": "life",
   "featured": false,
-  "img": "image/Life/xxx.jpg",
-  "hook": "",
-  "content": ""
+  "img": "image/Life/xxx.jpg"
 }
 ```
 
-可选规则建议：
+可选字段：
 
-- 先占位：只填 `img/tag/category/featured`
-- 后补文案：再完善 `title/hook/content`
-- 每次批量改动后运行：
-  - `node validate-content.mjs`
+- `modal_object_position`
+- `card_object_position`
+
+### 第二步：在 `data/storieslanguage.json` 追加同 `id` 的三语内容
+
+```json
+"new-story-id": {
+  "title": { "en": "", "zh": "", "ja": "" },
+  "tag": { "en": "Life", "zh": "生活", "ja": "ライフ" },
+  "hook": { "en": "", "zh": "", "ja": "" },
+  "content": { "en": "", "zh": "", "ja": "" }
+}
+```
+
+### 第三步：每次批量改动后运行
+
+- `node validate-content.mjs`
 
 ---
 
@@ -120,8 +212,9 @@ Xin/
 ├── index.html
 ├── data/
 │   ├── stories.json
+│   ├── storieslanguage.json
 │   ├── i18n.json
-│   
+│   └── README-content-validation.md
 ├── image/
 │   ├── Artists/
 │   ├── Character/
@@ -131,20 +224,24 @@ Xin/
 ├── dev-log1.md
 ├── deep-research-report.md
 └── deep-research-report (1).md
-└── README-content-validation.md
 ```
 
 ---
 
-## 下一步建议（按优先级）
+## 下一步建议（当前优先级）
 
-1. 批量补全空条目的 `title/hook/content`（至少先补 `hook`）
-2. 给 `stories` 增加唯一 `id`（后续维护、排序、去重更稳）
-3. 校验器增加“草稿模式”开关（允许空字段但给 warning）
-4. 再推进三语故事正文（`content` 改为 `{en,zh,ja}`）
+1. 把 `Price` 区块如有需要进一步微调为更接近日式工作室语气，但保持 Version A 价格结构不变
+2. 继续补充更多真实作品与故事，沿用 `stories.json + storieslanguage.json` 模型
+3. 视上线需要补充 `sitemap.xml`、`robots.txt`、OG 标签
+4. 如后续内容维护频率继续提高，可考虑把校验器增加“格式化建议”或“草稿模式”
+
+---
+
+## 历史阶段日志（保留归档）
+
 # NINI 开发日志
 
-> 品牌：NINI | Fine-Line & Botanical Tattoo Studio in Tokyo  
+> 品牌：NINI | Tattoo Studio in Tokyo  
 > 技术栈：单页 HTML + Tailwind CDN + 原生 JS  
 > 最后更新：2026-04-14
 
@@ -159,14 +256,12 @@ Xin/
 | 品牌名 | Komorebi Atelier → **NINI**（全文 5 处） |
 | 重复资源 | Material Symbols `<link>` 写了两次，删除重复 |
 | 图片 alt | `data-alt` → `alt`（6 处），修复 SEO 和无障碍 |
-| `<title>` | → `NINI \| Fine-Line & Botanical Tattoo Studio in Tokyo` |
-| meta description | 新增，内容：NINI is a boutique tattoo studio in Tokyo... |
 
 ### 第一阶段 1.2：画廊内容填充 ✅
 
 - 3 张画廊图片加上 **Hover Overlay**（标题 + 风格标签 + 引子 + View Story）
 - 新增 **Story Modal 弹窗**（点击作品后弹出）
-- 为 3 张图撰写了匹配的 **英文故事**（背景 / 象征 / 技法）
+- 为 3 张图撰写了匹配的 **英文故事**（content）
 
 ### 画廊架构重构 ✅
 
@@ -228,7 +323,7 @@ Xin/
 
 | # | 问题 | 说明 | 建议方案 |
 |---|------|------|---------|
-| 9 | **未部署** | 目前仅本地文件 | 部署到 Vercel / Netlify / GitHub Pages |
+| 9 | 部署 | 目前仅本地文件 | 部署到  GitHub Pages |
 | 10 | **无 SEO 完善** | 缺 sitemap.xml、robots.txt、Open Graph 标签 | 上线前补齐 |
 | 11 | **无数据分析** | 无法追踪访客和预约转化 | 接入 Google Analytics 4 |
 | 12 | **图片未优化** | 外部图没有压缩 | 真实图片用 WebP 格式 + 压缩 |
@@ -302,7 +397,7 @@ Xin/
 | 2.3 | 暗色模式切换 | — | ⏭ 跳过 |
 | 2.4 | 导航锚点定位 | 锚点 + 平滑滚动 | ✅ 完成 |
 | P2 | 小修复打包 | 年份 + 命名 + 清理 | ✅ 完成 |
-| **3.1** | **真实图片替换** | 建 images/ 文件夹，替换占位图 | ⬜ 待做 |
+| 3.1 | 真实图片替换 | 已切换为本地 image/ 目录素材（替换占位图） | ✅ 完成 |
 | **3.2** | **部署上线** | GitHub Pages（代码已 push；见上文首次开启 Pages） | ✅ 已 push |
 | **3.3** | **SEO 完善** | sitemap + robots.txt + OG 标签 | ⬜ 待做 |
 | **3.4** | **数据分析** | 接入 GA4 | ⬜ 待做 |

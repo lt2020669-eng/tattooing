@@ -91,24 +91,25 @@
         .tonal-shift { transition: background-color 0.3s ease; }
         html { scroll-behavior: smooth; }
         section[id] { scroll-margin-top: 120px; }
-        .calendly-inline-widget { min-width: 320px; height: 760px; }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(1rem); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body class="bg-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
 <!-- 顶部导航栏 -->
 <nav class="fixed top-0 w-full z-50 bg-stone-50/80 dark:bg-stone-900/80 backdrop-blur-xl">
-<div class="flex justify-between items-center px-12 py-6 max-w-screen-2xl mx-auto">
+<div class="flex justify-between items-center px-5 py-4 md:px-12 md:py-6 max-w-screen-2xl mx-auto">
 <!-- 品牌名链接：点击返回页面顶部，使用衬线斜体作为视觉 Logo -->
-<a href="#" class="text-2xl font-serif italic text-orange-900 dark:text-orange-100 no-underline">NINI</a>
+<a href="#" class="text-xl md:text-2xl font-serif italic text-orange-900 dark:text-orange-100 no-underline">NINI</a>
 <!-- 导航菜单容器：手机端隐藏，从 md 及以上屏幕显示为横向 flex -->
 <div class="hidden md:flex items-center gap-10
             [&>a]:text-stone-600 dark:[&>a]:text-stone-400 [&>a:hover]:text-orange-900 dark:[&>a:hover]:text-orange-300
             [&>a]:transition-colors [&>a]:font-serif [&>a]:tracking-tight">
 <a href="#artists" data-i18n="nav_artists">Artists</a>
 <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
+<a href="#price" data-i18n="nav_price">Price</a>
+<a href="#booking" data-i18n="nav_booking">Booking</a>
 <a href="#studio" data-i18n="nav_studio">Studio</a>
-<a href="#booking" data-i18n="nav_booking">Booking</a><div class="relative group">
+<div class="relative group">
 <button class="flex items-center gap-1 text-stone-600 dark:text-stone-400 hover:text-orange-900 dark:hover:text-orange-300 transition-colors font-serif tracking-tight text-sm uppercase">
 <span id="lang-label">EN</span>
 <span class="material-symbols-outlined text-sm">expand_more</span>
@@ -122,12 +123,17 @@
 </div>
 </div>
 </div>
-<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-label font-bold tracking-wide hover:opacity-80 transition-all duration-300 shadow-sm" data-i18n="btn_book_now" onclick="scrollToBooking()">
+<button class="bg-primary text-on-primary px-5 py-2.5 md:px-8 md:py-3 rounded-full font-label font-bold text-sm md:text-base tracking-wide hover:opacity-80 transition-all duration-300 shadow-sm" data-i18n="btn_book_now" onclick="scrollToBooking()">
                 Book Now
             </button>
 </div>
+<div class="md:hidden border-t border-outline-variant/20 px-5 py-2 flex items-center justify-center gap-2 bg-stone-50/90 dark:bg-stone-900/90">
+<button type="button" class="px-3 py-1.5 rounded-full text-xs font-label font-bold tracking-wide text-on-surface transition-colors" data-mobile-lang="en" onclick="setLang('en')">EN</button>
+<button type="button" class="px-3 py-1.5 rounded-full text-xs font-label font-bold tracking-wide text-on-surface transition-colors" data-mobile-lang="zh" onclick="setLang('zh')">中文</button>
+<button type="button" class="px-3 py-1.5 rounded-full text-xs font-label font-bold tracking-wide text-on-surface transition-colors" data-mobile-lang="ja" onclick="setLang('ja')">JA</button>
+</div>
 </nav>
-<main class="pt-32">
+<main class="pt-32 md:pt-32">
 <!-- Hero / Artists：主视觉与艺术家介绍 -->
 <section class="max-w-screen-2xl mx-auto px-12 pb-24" id="artists">
 <div class="flex flex-col items-center text-center">
@@ -159,7 +165,7 @@
 <div class="max-w-screen-2xl mx-auto px-12">
 <div class="flex justify-between items-end mb-12">
 <h2 class="text-5xl font-serif text-on-surface italic" data-i18n="gallery_title">The Collection</h2>
-<p class="text-on-surface-variant font-body max-w-xs text-right" data-i18n="gallery_subtitle">Selected works celebrating the delicate balance of nature and geometric precision.</p>
+<p class="text-on-surface-variant font-body max-w-xs text-right" data-i18n="gallery_subtitle">Selected Works.</p>
 </div>
 <!-- 分类筛选按钮容器（renderFilters() 会填充） -->
 <div class="flex flex-wrap gap-3 mb-12 overflow-x-auto pb-2" id="filter-bar"></div>
@@ -174,15 +180,79 @@
 </div>
 </div>
 </section>
-<!-- Booking：预约区（Calendly 内嵌） -->
+<!-- Price：简洁价格说明区，放在作品之后、预约之前，帮助用户先建立报价预期 -->
+<section class="py-32 max-w-5xl mx-auto px-12" id="price">
+<div class="bg-surface rounded-xl border border-outline-variant/30 p-8 md:p-14 shadow-sm">
+<div class="text-center mb-12">
+<h2 class="text-5xl font-serif text-on-surface italic mb-4" data-i18n="price_title">Pricing</h2>
+<p class="text-on-surface-variant font-body max-w-2xl mx-auto leading-relaxed" data-i18n="price_subtitle">Clear guidance before booking, so you know what shapes the final quote.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+<div class="bg-surface-container-low rounded-2xl p-6">
+<h3 class="text-lg font-serif italic text-on-surface mb-3" data-i18n="price_item_1_title">Up to 5cm</h3>
+<p class="text-on-surface-variant font-body leading-relaxed" data-i18n="price_item_1_body">20,000 JPY</p>
+</div>
+<div class="bg-surface-container-low rounded-2xl p-6">
+<h3 class="text-lg font-serif italic text-on-surface mb-3" data-i18n="price_item_2_title">Up to 10cm</h3>
+<p class="text-on-surface-variant font-body leading-relaxed" data-i18n="price_item_2_body">40,000 JPY</p>
+</div>
+<div class="bg-surface-container-low rounded-2xl p-6">
+<h3 class="text-lg font-serif italic text-on-surface mb-3" data-i18n="price_item_3_title">Over 10cm</h3>
+<p class="text-on-surface-variant font-body leading-relaxed" data-i18n="price_item_3_body">Quoted after consultation</p>
+</div>
+</div>
+<div class="text-center">
+<p class="text-on-surface-variant font-body mb-6 max-w-2xl mx-auto" data-i18n="price_note">If you are unsure where to begin, send us your idea first. We will help you shape both the design direction and the expected price range.</p>
+<button class="bg-primary text-on-primary px-10 py-4 rounded-full font-label font-bold text-lg hover:opacity-90 transition-all shadow-lg shadow-primary/10" data-i18n="price_cta" onclick="scrollToBooking()">Book a Consultation</button>
+</div>
+</div>
+</section>
+<!-- Care：预约前后的通用注意事项，放在报价与日历之间，承接决策路径 -->
+<section class="bg-surface-container-low py-32" id="care">
+<div class="max-w-6xl mx-auto px-12">
+<div class="text-center mb-12">
+<h2 class="text-5xl font-serif text-on-surface italic mb-4" data-i18n="care_title">Before &amp; Aftercare</h2>
+<p class="text-on-surface-variant font-body max-w-3xl mx-auto leading-relaxed" data-i18n="care_subtitle">A few simple steps before and after your session can make healing smoother and help your tattoo settle beautifully.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+<div class="bg-surface rounded-2xl border border-outline-variant/30 p-8 shadow-sm">
+<h3 class="text-2xl font-serif italic text-on-surface mb-5" data-i18n="care_before_title">Before You Book</h3>
+<ul class="space-y-4 text-on-surface-variant font-body leading-relaxed list-disc pl-5">
+<li data-i18n="care_before_1">Get a full night's sleep and eat well before your appointment.</li>
+<li data-i18n="care_before_2">Avoid alcohol the day before, and limit caffeine right before the session.</li>
+<li data-i18n="care_before_3">Do not tattoo on sunburned, irritated, or freshly injured skin.</li>
+<li data-i18n="care_before_4">Wear comfortable clothing that gives easy access to the tattoo area.</li>
+<li data-i18n="care_before_5">Please tell us in advance if you have allergies, skin conditions, or special healing concerns.</li>
+</ul>
+</div>
+<div class="bg-surface rounded-2xl border border-outline-variant/30 p-8 shadow-sm">
+<h3 class="text-2xl font-serif italic text-on-surface mb-5" data-i18n="care_after_title">After Your Session</h3>
+<ul class="space-y-4 text-on-surface-variant font-body leading-relaxed list-disc pl-5">
+<li data-i18n="care_after_1">Keep the tattoo clean and follow the wrapping guidance from your artist.</li>
+<li data-i18n="care_after_2">Wash gently with lukewarm water and mild soap, then pat dry.</li>
+<li data-i18n="care_after_3">Apply a thin layer of recommended aftercare cream without over-moisturizing.</li>
+<li data-i18n="care_after_4">Avoid pools, hot baths, saunas, and intense sun exposure while healing.</li>
+<li data-i18n="care_after_5">Do not scratch or pick at flakes; let the skin heal naturally.</li>
+</ul>
+</div>
+</div>
+<div class="text-center">
+<p class="text-on-surface-variant font-body mb-6 max-w-3xl mx-auto leading-relaxed" data-i18n="care_note">These are general guidelines for most appointments. If your design, placement, or skin condition needs extra care, we will walk you through it personally.</p>
+<button class="bg-primary text-on-primary px-10 py-4 rounded-full font-label font-bold text-lg hover:opacity-90 transition-all shadow-lg shadow-primary/10" data-i18n="care_cta" onclick="scrollToBooking()">Choose Your Slot</button>
+</div>
+</div>
+</section>
+<!-- Booking：统一改为外跳预约入口，避免移动端 iframe 和 cookie 弹窗影响体验 -->
 <section class="py-32 max-w-7xl mx-auto px-12" id="booking">
 <div class="bg-surface-container-lowest rounded-xl p-8 md:p-12">
 <div class="text-center mb-8">
 <h3 class="text-3xl md:text-4xl font-serif text-on-surface mb-3" data-i18n="booking_title">Secure Your Light</h3>
-<p class="text-on-surface-variant font-body" data-i18n="booking_embed_note">Choose your preferred slot directly from our live calendar.</p>
+<p class="text-on-surface-variant font-body max-w-2xl mx-auto leading-relaxed" data-i18n="booking_embed_note">Open our booking page to view live availability and choose the session that fits you best.</p>
+<p class="text-on-surface-variant/80 font-body text-sm mt-3" data-i18n="booking_pre_note">Before booking, please review the care notes above and let us know if you have any special concerns.</p>
 </div>
-<div class="rounded-xl overflow-hidden border border-outline-variant/20 bg-white">
-<div class="calendly-inline-widget" data-url="https://calendly.com/ninitattooing/tattoo-consultation"></div>
+<div class="max-w-2xl mx-auto rounded-2xl border border-outline-variant/20 bg-surface p-8 md:p-10 text-center shadow-sm">
+<p class="text-on-surface-variant font-body leading-relaxed mb-6" data-i18n="booking_open_note">You will be taken to our secure booking page in a new tab, where you can review availability and confirm your appointment.</p>
+<button class="w-full sm:w-auto bg-primary text-on-primary px-10 py-4 rounded-full font-label font-bold text-lg hover:opacity-90 transition-all shadow-lg shadow-primary/10" data-i18n="booking_open_cta" onclick="openBookingPage()">Open Booking Page</button>
 </div>
 </div>
 </section>
@@ -221,10 +291,18 @@
 <div class="flex flex-wrap gap-x-12 gap-y-4 items-end md:justify-end
             [&>a]:text-stone-500 [&>a]:uppercase [&>a]:text-xs [&>a]:font-bold
             [&>a]:transition-colors [&>a:hover]:text-orange-700 dark:[&>a:hover]:text-orange-400">
-  <a href="#">Instagram</a> 
+  <a href="https://www.instagram.com/ninitattooing?igsh=bnBjaGswZnNlOGNy&utm_source=qr" target="_blank" rel="noopener">Instagram</a> 
+  <a href="https://www.tiktok.com/@ninitattooing?_r=1&_t=ZS-95Wk8PoCbWW" target="_blank" rel="noopener">TikTok</a>
   <a href="#" data-i18n="footer_privacy">Privacy</a>
   <a href="#" data-i18n="footer_terms">Terms</a>
-  <a href="#" data-i18n="footer_contact">Contact</a>
+  <div class="relative group">
+    <button class="text-stone-500 uppercase text-xs font-bold transition-colors hover:text-orange-700 dark:hover:text-orange-400" data-i18n="footer_contact">Contact</button>
+    <div class="absolute right-0 bottom-full mb-3 min-w-[220px] bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[70] p-3 flex flex-col gap-2">
+      <a href="https://www.instagram.com/ninitattooing?igsh=bnBjaGswZnNlOGNy&utm_source=qr" target="_blank" rel="noopener" class="text-stone-500 uppercase text-xs font-bold transition-colors hover:text-orange-700 dark:hover:text-orange-400">Instagram</a>
+      <a href="https://www.tiktok.com/@ninitattooing?_r=1&_t=ZS-95Wk8PoCbWW" target="_blank" rel="noopener" class="text-stone-500 uppercase text-xs font-bold transition-colors hover:text-orange-700 dark:hover:text-orange-400">TikTok</a>
+      <a href="mailto:ninitattooing@gmail.com" class="text-stone-500 normal-case text-xs font-bold transition-colors hover:text-orange-700 dark:hover:text-orange-400">ninitattooing@gmail.com</a>
+    </div>
+  </div>
 </div>
 </div>
 </footer>
@@ -246,7 +324,6 @@
 </div>
 </div>
 
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script>
 /* ── i18n：多语言词典与切换逻辑（外部 JSON） ── */
 let i18n = {};
@@ -296,6 +373,15 @@ function applyLang() {
       a.className = 'mx-2 px-3 py-2 rounded-md text-xs font-serif text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 hover:text-orange-900 transition-colors cursor-pointer';
     }
   });
+  // 同步移动端语言条选中态，让小屏用户也能看到当前语言
+  document.querySelectorAll('[data-mobile-lang]').forEach(button => {
+    const buttonLang = button.getAttribute('data-mobile-lang');
+    if (buttonLang === currentLang) {
+      button.className = 'px-3 py-1.5 rounded-full text-xs font-label font-bold tracking-wide bg-primary text-on-primary transition-colors';
+    } else {
+      button.className = 'px-3 py-1.5 rounded-full text-xs font-label font-bold tracking-wide text-on-surface hover:bg-surface-container transition-colors';
+    }
+  });
   // 设置 <html lang>，便于浏览器/SEO/读屏工具识别当前语言
   const docLangs = { zh: 'zh-CN', ja: 'ja', en: 'en' };
   document.documentElement.lang = docLangs[currentLang] || 'en';
@@ -318,8 +404,13 @@ function scrollToBooking() {
   }
 }
 
+function openBookingPage() {
+  window.open('https://calendly.com/ninitattooing/tattoo-consultation', '_blank', 'noopener');
+}
+
 /* ── Stories Data：作品数据源（外部 JSON） ── */
 let stories = [];
+let storiesLanguage = {};
 
 async function loadStories() {
   try {
@@ -332,6 +423,31 @@ async function loadStories() {
     console.error('Failed to load stories.json:', error);
     stories = [];
   }
+}
+
+async function loadStoriesLanguage() {
+  try {
+    const response = await fetch('data/storieslanguage.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    if (!data || typeof data !== 'object' || Array.isArray(data)) {
+      throw new Error('storieslanguage.json is not an object');
+    }
+    storiesLanguage = data;
+  } catch (error) {
+    console.error('Failed to load storieslanguage.json:', error);
+    storiesLanguage = {};
+  }
+}
+
+function getLocalizedStoryField(story, field) {
+  const id = story?.id;
+  const localized = id ? storiesLanguage?.[id]?.[field] : null;
+  if (localized && typeof localized === 'object' && !Array.isArray(localized)) {
+    return localized[currentLang] || localized.en || '';
+  }
+  // 兼容旧数据结构：若 storieslanguage 不存在时，回退读取 stories.json 内联字段
+  return story?.[field] || '';
 }
 
 /* ── Gallery Engine：筛选、分页、渲染 ── */
@@ -384,15 +500,29 @@ function renderGallery() {
   const grid = document.getElementById('gallery-grid');
 
   grid.innerHTML = toShow.map((s, i) => {
+    // 找到当前卡片在原始 stories 数组中的索引，供 openStory() 打开正确详情
     const globalIndex = stories.indexOf(s);
+    // 为了让三列网格更有层次感，中间一列在大屏时增加顶部错位
     const offset = (i % 3 === 1) ? 'lg:mt-16' : '';
+    // 这些文本来自 storieslanguage.json，会随当前语言动态切换
+    const storyTag = getLocalizedStoryField(s, 'tag');
+    const storyTitle = getLocalizedStoryField(s, 'title');
+    const storyHook = getLocalizedStoryField(s, 'hook');
+    // 卡片图默认使用居中裁切；若某条作品配置了 card_object_position，则按该值微调取景区域
+    const cardObjectPosition =
+      typeof s.card_object_position === 'string' && s.card_object_position.trim()
+        ? s.card_object_position.trim()
+        : 'center';
     return `
-      <div class="aspect-[3/4] rounded-xl overflow-hidden group cursor-pointer relative ${offset} opacity-0 translate-y-4" onclick="openStory(${globalIndex})" style="animation: fadeUp 0.5s ease ${i * 0.08}s forwards">
-        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="${s.title}" src="${s.img}" loading="lazy"/>
+      <!-- 作品卡片：固定 4:6 比例，点击后打开对应故事弹窗 -->
+      <div class="aspect-[4/6] rounded-xl overflow-hidden group cursor-pointer relative ${offset} opacity-0 translate-y-4" onclick="openStory(${globalIndex})" style="animation: fadeUp 0.5s ease ${i * 0.08}s forwards">
+        <!-- object-cover 保持卡片铺满；object-position 用于单张作品的裁切焦点微调 -->
+        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="${storyTitle}" src="${s.img}" loading="lazy" style="object-position: ${cardObjectPosition};"/>
+        <!-- hover 时显示渐变遮罩与标题摘要，提升可读性 -->
         <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-6">
-          <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary-fixed-dim mb-2">${s.tag}</span>
-          <h3 class="text-2xl font-serif italic text-white mb-2">${s.title}</h3>
-          <p class="text-sm text-stone-300 font-body leading-relaxed mb-3">${s.hook}</p>
+          <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary-fixed-dim mb-2">${storyTag}</span>
+          <h3 class="text-2xl font-serif italic text-white mb-2">${storyTitle}</h3>
+          <p class="text-sm text-stone-300 font-body leading-relaxed mb-3">${storyHook}</p>
           <span class="text-xs font-bold uppercase tracking-widest text-white/70 flex items-center gap-1">${t('gallery_view_story')} <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
         </div>
       </div>`;
@@ -428,6 +558,7 @@ function renderGallery() {
 }
 
 function setFilter(cat) {
+  // 切换分类时重置可见数量，并重新渲染筛选按钮与画廊
   currentFilter = cat;
   visibleCount = PAGE_SIZE;
   renderFilters();
@@ -435,12 +566,14 @@ function setFilter(cat) {
 }
 
 function loadMore() {
+  // “加载更多”本质上只是增加显示条数，然后重绘画廊
   visibleCount += PAGE_SIZE;
   renderGallery();
 }
 
 /* ── Story Modal：作品详情弹窗 ── */
 function splitContentSections(content) {
+  // 以后端保存的空行作为段落分隔，把长文本拆成多个可读段落
   return String(content || '')
     .split(/\n\s*\n+/)
     .map(section => section.trim())
@@ -448,13 +581,26 @@ function splitContentSections(content) {
 }
 
 function renderModal(index) {
+  // 根据索引读取当前作品，并取出当前语言对应的文案
   const s = stories[index];
+  const storyTag = getLocalizedStoryField(s, 'tag');
+  const storyTitle = getLocalizedStoryField(s, 'title');
+  const storyHook = getLocalizedStoryField(s, 'hook');
+  const storyContent = getLocalizedStoryField(s, 'content');
+  // 弹窗主图默认居中裁切；若单条作品配置了 modal_object_position，则按配置微调取景
+  const modalObjectPosition =
+    typeof s.modal_object_position === 'string' && s.modal_object_position.trim()
+      ? s.modal_object_position.trim()
+      : 'center';
+  // 弹窗里的上一张/下一张导航，基于当前筛选结果集而不是全部作品
   const filtered = getFilteredStories();
   const filteredIndex = filtered.indexOf(s);
   const hasPrev = filteredIndex > 0;
   const hasNext = filteredIndex < filtered.length - 1;
+  // 记录当前打开的是哪一条，供键盘切换与关闭逻辑使用
   currentStoryIndex = index;
-  const contentSections = splitContentSections(s.content);
+  // 把正文拆段后逐段渲染，避免大段文字挤在一起
+  const contentSections = splitContentSections(storyContent);
   const contentBlocks = contentSections.map((section, idx) => `
         <div>
           <p class="text-on-surface-variant font-body leading-relaxed whitespace-pre-line">${section}</p>
@@ -462,13 +608,15 @@ function renderModal(index) {
       `).join('');
 
   document.getElementById('story-body').innerHTML = `
+    <!-- 弹窗头图：固定高度，使用 object-cover 保持铺满，object-position 控制单图裁切焦点 -->
     <div class="h-72 md:h-96 overflow-hidden rounded-t-xl">
-      <img src="${s.img}" alt="${s.title}" class="w-full h-full object-cover"/>
+      <img src="${s.img}" alt="${storyTitle}" class="w-full h-full object-cover" style="object-position: ${modalObjectPosition};"/>
     </div>
+    <!-- 弹窗正文：依次展示标签、标题、引导句、正文段落、翻页按钮和预约按钮 -->
     <div class="p-8 md:p-12">
-      <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-3 block">${s.tag}</span>
-      <h2 class="text-4xl md:text-5xl font-serif italic text-on-surface mb-4">${s.title}</h2>
-      <p class="text-lg text-on-surface-variant font-body italic leading-relaxed mb-8 border-l-2 border-primary pl-4">${s.hook}</p>
+      <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-3 block">${storyTag}</span>
+      <h2 class="text-4xl md:text-5xl font-serif italic text-on-surface mb-4">${storyTitle}</h2>
+      <p class="text-lg text-on-surface-variant font-body italic leading-relaxed mb-8 border-l-2 border-primary pl-4">${storyHook}</p>
       <div class="space-y-6 mb-10">
 ${contentBlocks || `
         <div>
@@ -484,32 +632,38 @@ ${contentBlocks || `
           ${t('modal_next')} <span class="material-symbols-outlined text-lg">chevron_right</span>
         </button>
       </div>
-      <button class="w-full bg-primary text-on-primary py-4 rounded-full font-label font-bold text-lg hover:opacity-90 transition-all shadow-lg shadow-primary/10" onclick="closeStory();scrollToBooking()">${t('btn_book_tattoo')}</button>
+      <button class="w-full bg-primary text-on-primary py-4 rounded-full font-label font-bold text-lg hover:opacity-90 transition-all shadow-lg shadow-primary/10" onclick="closeStory();openBookingPage()">${t('btn_book_tattoo')}</button>
     </div>`;
+  // 每次切换作品后，把弹窗滚动位置重置到顶部，避免停留在上一条的中间位置
   document.getElementById('story-content').scrollTop = 0;
 }
 
 function openStory(index) {
+  // 先渲染内容，再把遮罩和弹窗从隐藏态切换为可见态
   renderModal(index);
   const modal = document.getElementById('story-modal');
   modal.classList.remove('opacity-0','pointer-events-none');
   modal.classList.add('opacity-100','pointer-events-auto');
   document.getElementById('story-content').classList.remove('scale-95');
   document.getElementById('story-content').classList.add('scale-100');
+  // 打开弹窗时锁定页面滚动，避免背景页面跟着滚动
   document.body.style.overflow = 'hidden';
 }
 
 function closeStory() {
+  // 恢复弹窗隐藏态，并解除页面滚动锁定
   const modal = document.getElementById('story-modal');
   modal.classList.add('opacity-0','pointer-events-none');
   modal.classList.remove('opacity-100','pointer-events-auto');
   document.getElementById('story-content').classList.add('scale-95');
   document.getElementById('story-content').classList.remove('scale-100');
   document.body.style.overflow = '';
+  // 关闭后清空当前索引，表示此时没有作品处于打开状态
   currentStoryIndex = -1;
 }
 
 function navStory(dir) {
+  // 在当前筛选结果中前后切换作品，dir 为 -1 表示上一张，1 表示下一张
   const filtered = getFilteredStories();
   const current = filtered.indexOf(stories[currentStoryIndex]);
   const next = current + dir;
@@ -528,13 +682,17 @@ document.addEventListener('keydown', function(e) {
 
 /* ── Init：页面首次加载执行 ── */
 async function initPage() {
+  // 首次加载按顺序读取文案、结构化故事数据和多语言故事内容
   await loadI18n();
   await loadStories();
+  await loadStoriesLanguage();
+  // 数据就绪后再统一应用语言、绘制筛选器与画廊
   applyLang();
   renderFilters();
   renderGallery();
 }
 
+// 页面加载后立即启动初始化流程
 initPage();
 </script>
 </body></html>

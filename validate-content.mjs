@@ -4,6 +4,7 @@ import path from "node:path";
 const ROOT = process.cwd();
 const INDEX_PATH = path.join(ROOT, "index.html");
 const STORIES_PATH = path.join(ROOT, "data", "stories.json");
+const STORIES_LANG_PATH = path.join(ROOT, "data", "storieslanguage.json");
 const I18N_PATH = path.join(ROOT, "data", "i18n.json");
 const LANGS = ["en", "zh", "ja"];
 const ALLOWED_STORY_CATEGORIES = ["character", "life", "other"];
@@ -135,17 +136,15 @@ function validateStories(stories) {
   }
 
   const requiredFields = [
-    "title",
-    "tag",
+    "id",
     "category",
     "featured",
-    "img",
-    "hook",
-    "content"
+    "img"
   ];
+  const optionalFields = new Set(["modal_object_position", "card_object_position"]);
 
   const categories = new Set();
-  const seenTitles = new Set();
+  const seenIds = new Set();
 
   stories.forEach((story, idx) => {
     if (!story || typeof story !== "object" || Array.isArray(story)) {
@@ -157,6 +156,20 @@ function validateStories(stories) {
       if (!Object.prototype.hasOwnProperty.call(story, field)) {
         errors.push(`stories[${idx}] missing required field: "${field}"`);
       }
+    }
+
+    for (const field of Object.keys(story)) {
+      if (!requiredFields.includes(field) && !optionalFields.has(field)) {
+        warnings.push(`stories[${idx}] contains unknown field: "${field}"`);
+      }
+    }
+
+    if (!isNonEmptyString(story.id)) {
+      errors.push(`stories[${idx}].id must be a non-empty string.`);
+    } else if (seenIds.has(story.id)) {
+      errors.push(`Duplicate story id detected: "${story.id}"`);
+    } else {
+      seenIds.add(story.id);
     }
 
     if (!isNonEmptyString(story.category)) {
@@ -175,24 +188,74 @@ function validateStories(stories) {
       errors.push(`stories[${idx}].featured must be boolean.`);
     }
 
+    if (
+      Object.prototype.hasOwnProperty.call(story, "modal_object_position") &&
+      !isNonEmptyString(story.modal_object_position)
+    ) {
+      errors.push(`stories[${idx}].modal_object_position must be a non-empty string when provided.`);
+    }
+
+    if (
+      Object.prototype.hasOwnProperty.call(story, "card_object_position") &&
+      !isNonEmptyString(story.card_object_position)
+    ) {
+      errors.push(`stories[${idx}].card_object_position must be a non-empty string when provided.`);
+    }
+
     validateStoryLocalImagePath(story.img, idx);
-
-    const translatableFields = ["title", "tag", "hook", "content"];
-    for (const field of translatableFields) {
-      validateTranslatableField(story, field, idx);
-    }
-
-    if (isNonEmptyString(story.title)) {
-      if (seenTitles.has(story.title)) {
-        warnings.push(`Duplicate story title detected: "${story.title}"`);
-      } else {
-        seenTitles.add(story.title);
-      }
-    }
   });
 
   if (categories.size === 0) {
     warnings.push("No story categories detected.");
+  }
+
+  return seenIds;
+}
+
+function validateStoriesLanguage(storiesLanguage, storyIds) {
+  if (!storiesLanguage || typeof storiesLanguage !== "object" || Array.isArray(storiesLanguage)) {
+    errors.push("data/storieslanguage.json must be an object.");
+    return;
+  }
+
+  const textFields = ["title", "tag", "hook", "content"];
+
+  for (const id of storyIds) {
+    const entry = storiesLanguage[id];
+    if (!entry || typeof entry !== "object" || Array.isArray(entry)) {
+      errors.push(`storieslanguage missing object for story id "${id}".`);
+      continue;
+    }
+
+    for (const field of textFields) {
+      const fieldObj = entry[field];
+      if (!fieldObj || typeof fieldObj !== "object" || Array.isArray(fieldObj)) {
+        errors.push(`storieslanguage["${id}"].${field} must be an object with en/zh/ja.`);
+        continue;
+      }
+
+      if (!isNonEmptyString(fieldObj.en)) {
+        if (field === "hook") {
+          warnings.push(`storieslanguage["${id}"].${field}.en is empty.`);
+        } else {
+          errors.push(`storieslanguage["${id}"].${field}.en must be non-empty.`);
+        }
+      }
+
+      if (!isNonEmptyString(fieldObj.zh)) {
+        warnings.push(`storieslanguage["${id}"].${field}.zh is empty (fallback to en).`);
+      }
+
+      if (!isNonEmptyString(fieldObj.ja)) {
+        warnings.push(`storieslanguage["${id}"].${field}.ja is empty (fallback to en).`);
+      }
+    }
+  }
+
+  for (const id of Object.keys(storiesLanguage)) {
+    if (!storyIds.has(id)) {
+      warnings.push(`storieslanguage contains unused story id: "${id}"`);
+    }
   }
 }
 
@@ -222,6 +285,7 @@ function printReport() {
 function main() {
   const indexHtml = readText(INDEX_PATH);
   const stories = readJson(STORIES_PATH);
+  const storiesLanguage = readJson(STORIES_LANG_PATH);
   const i18n = readJson(I18N_PATH);
 
   if (indexHtml) {
@@ -229,7 +293,10 @@ function main() {
     validateI18n(i18n, requiredI18nKeys);
   }
 
-  validateStories(stories);
+  const storyIds = validateStories(stories);
+  if (storyIds) {
+    validateStoriesLanguage(storiesLanguage, storyIds);
+  }
   printReport();
 
   process.exit(errors.length > 0 ? 1 : 0);
