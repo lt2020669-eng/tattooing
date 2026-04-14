@@ -3,8 +3,8 @@
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>NINI | Fine-Line &amp; Botanical Tattoo Studio in Tokyo</title>
-<meta name="description" content="NINI is a boutique tattoo studio in Tokyo specializing in fine-line and botanical tattooing. Book your custom tattoo session today."/>
+<title>NINI |Tattoo Studio in Tokyo</title>
+<meta name="description" content="We create zero-regret tattoo art by deeply listening to your story and translating it into meaningful designs that stay with you for life."/>
 <!-- Tailwind CDN: 直接在浏览器里使用 Tailwind，无需本地构建 -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
@@ -132,7 +132,7 @@
 <section class="max-w-screen-2xl mx-auto px-12 pb-24" id="artists">
 <div class="flex flex-col items-center text-center">
 <div class="relative mb-12">
-<img class="w-48 h-48 rounded-full object-cover border-4 border-surface-container-low p-1 shadow-sm" alt="NINI tattoo artist portrait" src="image/artist.jpg"/>
+<img class="w-48 h-48 rounded-full object-cover border-4 border-surface-container-low p-1 shadow-sm" alt="NINI tattoo artist portrait" src="image/Artists/artistXin.jpg"/>
 </div>
 <h1 class="text-6xl md:text-8xl font-serif italic text-on-surface mb-6 tracking-tight leading-none">
                     NINI
@@ -140,6 +140,10 @@
 <p class="max-w-2xl text-xl text-on-surface-variant font-body leading-relaxed mb-10" data-i18n="hero_desc">
                     A boutique sanctuary dedicated to the art of fine-line and botanical tattooing. Inspired by the interplay of light and leaves, we create permanent poetry on skin.
                 </p>
+<div class="max-w-3xl text-left text-on-surface-variant font-body leading-relaxed space-y-4 mb-10">
+<p data-i18n="hero_story_p1"></p>
+<p data-i18n="hero_story_p2"></p>
+</div>
 <div class="flex gap-4">
 <button class="bg-primary text-on-primary px-10 py-4 rounded-full font-label font-bold text-lg hover:opacity-90 transition-all shadow-lg shadow-primary/10" data-i18n="btn_book_session" onclick="scrollToBooking()">
                         Book Your Session
@@ -244,47 +248,23 @@
 
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script>
-/* ── i18n：多语言词典与切换逻辑 ── */
-const i18n = {
-  nav_artists:       { en: "Artists",   zh: "艺术家",  ja: "アーティスト" },
-  nav_gallery:       { en: "Gallery",   zh: "作品集",  ja: "ギャラリー" },
-  nav_studio:        { en: "Studio",    zh: "工作室",  ja: "スタジオ" },
-  nav_booking:       { en: "Booking",   zh: "预约",    ja: "予約" },
-  btn_book_now:      { en: "Book Now",  zh: "立即预约", ja: "今すぐ予約" },
-  hero_desc:         { en: "A boutique sanctuary dedicated to the art of fine-line and botanical tattooing. Inspired by the interplay of light and leaves, we create permanent poetry on skin.",
-                       zh: "一间专注于细线与植物系纹身艺术的精品工作室。灵感源于光影与枝叶的交织，我们在肌肤上创作永恒的诗篇。",
-                       ja: "ファインラインとボタニカルタトゥーを専門とするブティックスタジオ。光と葉のインタープレイに触発され、肌の上に永遠の詩を刻みます。" },
-  btn_book_session:  { en: "Book Your Session", zh: "预约体验",  ja: "セッションを予約" },
-  btn_view_portfolio:{ en: "View Portfolio",    zh: "查看作品",  ja: "作品を見る" },
-  gallery_title:     { en: "The Collection",    zh: "作品集",    ja: "コレクション" },
-  gallery_subtitle:  { en: "Selected works celebrating the delicate balance of nature and geometric precision.",
-                       zh: "精选作品，致敬自然之美与几何之精。",
-                       ja: "自然の美しさと幾何学的な精密さの絶妙なバランスを称える厳選作品。" },
-  btn_load_more:     { en: "View More Works",   zh: "查看更多作品", ja: "もっと見る" },
-  gallery_view_story:{ en: "View Story",        zh: "查看故事",    ja: "ストーリーを見る" },
-  gallery_no_works:  { en: "No works in this category yet — stay tuned.", zh: "该分类暂无作品，敬请期待。", ja: "このカテゴリにはまだ作品がありません。お楽しみに。" },
-  filter_all:        { en: "All", zh: "全部", ja: "すべて" },
-  booking_title:     { en: "Secure Your Light",      zh: "预定您的光影",  ja: "あなたの光を確保する" },
-  booking_embed_note:{ en: "Choose your preferred slot directly from our live calendar.", zh: "请直接在实时日历中选择你偏好的预约时段。", ja: "ライブカレンダーから直接ご希望の時間をお選びください。" },
-  locations_title:   { en: "Find the Light",   zh: "寻找光影",  ja: "光を探す" },
-  locations_subtitle:{ en: "Where our stories come to life.", zh: "故事在这里发生。", ja: "物語が生まれる場所。" },
-  loc_hitomi_name:   { en: "Hitomi.Studio",    zh: "Hitomi.Studio", ja: "Hitomi.Studio" },
-  loc_hitomi_desc:   { en: "A cozy creative space nestled in Tokyo's Taito district, where coffee aroma meets the gentle hum of tattoo machines. Walk-ins welcome — or book ahead for a dedicated session.",
-                       zh: "坐落于东京台东区的温馨创作空间，咖啡香气与纹身机的轻柔嗡鸣交织其中。欢迎随时到访，也可提前预约专属时段。",
-                       ja: "東京・台東区に佇む居心地よいクリエイティブスペース。コーヒーの香りとタトゥーマシンの柔らかな音が交差します。飛び込み歓迎、または事前予約も承ります。" },
-  footer_tagline:    { en: "© {year} NINI. Crafted for the Sun-Drenched Soul. Every needle stroke is a word in the story of you.",
-                       zh: "© {year} NINI. 为热爱阳光的灵魂而生。每一针都是你故事中的一个字。",
-                       ja: "© {year} NINI. 太陽に満ちた魂のために。すべての針の一刺しが、あなたの物語の一言。" },
-  footer_privacy:    { en: "Privacy",  zh: "隐私政策",  ja: "プライバシー" },
-  footer_terms:      { en: "Terms",    zh: "服务条款",  ja: "利用規約" },
-  footer_contact:    { en: "Contact",  zh: "联系我们",  ja: "お問い合わせ" },
-  modal_inspiration: { en: "The Inspiration", zh: "创作灵感",  ja: "インスピレーション" },
-  modal_symbolism:   { en: "Symbolism",       zh: "象征意义",  ja: "シンボリズム" },
-  modal_technique:   { en: "Technique",       zh: "技法说明",  ja: "テクニック" },
-  modal_prev:        { en: "Prev", zh: "上一个", ja: "前へ" },
-  modal_next:        { en: "Next", zh: "下一个", ja: "次へ" },
-  btn_book_tattoo:   { en: "Book Your Tattoo Now", zh: "立即预约纹身", ja: "今すぐタトゥーを予約" },
-};
+/* ── i18n：多语言词典与切换逻辑（外部 JSON） ── */
+let i18n = {};
+
+async function loadI18n() {
+  try {
+    const response = await fetch('data/i18n.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    if (!data || typeof data !== 'object' || Array.isArray(data)) {
+      throw new Error('i18n.json is not an object');
+    }
+    i18n = data;
+  } catch (error) {
+    console.error('Failed to load i18n.json:', error);
+    i18n = {};
+  }
+}
 
 // 记住用户上次选择的语言；首次访问默认英文
 let currentLang = localStorage.getItem('nini-lang') || 'en';
@@ -338,55 +318,60 @@ function scrollToBooking() {
   }
 }
 
-/* ── Stories Data：作品数据源 ── */
-const stories = [
-  {
-    title: "Fern Whisper", tag: "Botanical · Fine Line", category: "botanical", featured: true,
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAP-zYDmcXK3Pv1dKA_GKy9bSe8ITD91-2c7w-Cd96oB0-J7UECPWseCNqXE48pWvmfdBf73nWTDaQaK8ubdxpOKomiWgo3XQUBBdiOUqTIwxjDq-2R7XB_P6lu32nX1Xjn47IjOK7hGgK0s7T5qKLtz1wTVNKGRsUUf84HMSxK-ZtDnxZZzBxGFKFPaKiSgFxiH5YinqNEp2mBolYZj3Y5QBlJgp9waK2csikBhSH2i373UfS_z-y9aP2p8zrcggc7B56RJDmcETso",
-    hook: "A single fern frond holds the memory of an entire forest — quiet, ancient, endlessly unfolding.",
-    background: "Mika, a marine biologist from Seattle, spent a transformative summer researching coastal ecosystems in Kamakura. She was captivated by the ferns that blanketed the temple trails — each frond a fractal echo of the whole. She wanted a permanent reminder that growth is patient, spiraling, and never truly finished.",
-    symbolism: "The fern represents resilience and new beginnings. Its spiral unfurling — the fiddlehead — mirrors the Fibonacci sequence found throughout nature, symbolizing the hidden mathematical poetry that connects all living things.",
-    technique: "Executed in ultra-fine single-needle linework (3RL), the piece traces every leaflet with botanical precision. No shading, no fill — just the pure skeleton of the leaf, letting the skin itself become part of the design."
-  },
-  {
-    title: "Sacred Geometry", tag: "Geometric · Minimalist", category: "geometric", featured: true,
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAKQseg_GwGkaToSiO8j4KtoKBcOl62lhATNLKBm6S25e2kD66d2dPYJdc1kagaGlPXphX59hYrKoGBmsvIt8WE7UmtPlOaZVoc2J1g8bWd8qCSO3XiXdUf7NafUpVKPFCwC_UWUAtkaFcxe63ULwnoMheQW_mh8hwvp7iLmosIwwDTX9WQqvFOMGUafAtxqbMnuUO7iBSjbIKDGrDraSOlGS4zuQBVYCcpwDYnGZHCRD-V9h65517aWgg9Wkc4HUxg3OUO1lQ73P5e",
-    hook: "Where straight lines meet curved skin, a dialogue between order and humanity begins.",
-    background: "Leo, an architect from Berlin, found himself at a crossroads after completing a decade-long cathedral restoration project. Walking through Tokyo's Meiji Shrine, he was struck by how sacred geometry transcends cultures — the same proportions that shaped Gothic cathedrals also underpin Shinto shrine gates. He chose his shoulder as the canvas: a junction of movement and strength.",
-    symbolism: "The interlocking geometric forms represent the balance between logic and intuition. Triangles point toward aspiration, circles embody wholeness, and the negative space between them suggests that what is left unsaid can be as powerful as what is drawn.",
-    technique: "Precision-ruled lines using a 5RL needle with machine-assisted consistency. The design demands zero deviation — every angle is mathematically plotted before the needle touches skin. The minimalist palette of pure black on bare skin amplifies the architectural clarity."
-  },
-  {
-    title: "Celestial Balance", tag: "Celestial · Fine Line", category: "celestial", featured: true,
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB7XmoTb_nQH_v2fjGbet0W6NNslg-BiLEQphoSOARhJnDvX_vrOB-DQgvisYPZ9q8DmmIBKjtwzAuye-pVA7MCq3qVDQluWuh1zz0ww16ZVbYNALLdmUoItZ4tUZSVbe8EecjwG9YBkaUd6mrjYWOH_us7M1hbuZFNnFmT27bDe4FJ01EyQDCoQ_IZSl5LdaFfk8BlqOm99gwxeXRy501MS5uxFesJq5hvt4OqNcOHSrR_jFMQuiKIv4CJCg29pz1lY8aQGHBwwgJV",
-    hook: "The sun does not compete with the moon — they take turns illuminating the world.",
-    background: "Yuna, a Korean-Japanese poet living in Shimokitazawa, wrote her first published collection about the liminal space between day and night. After years of navigating two cultures and two languages, she wanted a tattoo on her wrist — always visible, always whispering — that captured the beauty of holding two truths at once. She chose the inner wrist: the place where pulse meets light.",
-    symbolism: "The sun represents conscious energy, ambition, and the self we show to the world. The moon embodies intuition, dreams, and the hidden self. Their intertwining speaks to the Japanese concept of 'in-yō' (陰陽) — not opposition, but a complementary dance that makes the whole.",
-    technique: "Delicate fine-line work with subtle dot shading (stippling) to create an ethereal glow around the celestial bodies. A 1RL needle for the thinnest outlines, transitioning to hand-poked dots for the luminous halo effect. The result feels less like ink and more like light captured under the skin."
+/* ── Stories Data：作品数据源（外部 JSON） ── */
+let stories = [];
+
+async function loadStories() {
+  try {
+    const response = await fetch('data/stories.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    if (!Array.isArray(data)) throw new Error('stories.json is not an array');
+    stories = data;
+  } catch (error) {
+    console.error('Failed to load stories.json:', error);
+    stories = [];
   }
-];
+}
 
 /* ── Gallery Engine：筛选、分页、渲染 ── */
 const PAGE_SIZE = 6;
+const CATEGORY_ORDER = ['character', 'life', 'other'];
+const CATEGORY_LABEL_KEYS = {
+  character: 'filter_character',
+  life: 'filter_life',
+  other: 'filter_other'
+};
 let currentFilter = 'all';
 let visibleCount = PAGE_SIZE;
 let currentStoryIndex = -1;
 
+function normalizeCategory(cat) {
+  return String(cat || '').trim().toLowerCase();
+}
+
 function getFilteredStories() {
   if (currentFilter === 'all') return stories;
-  return stories.filter(s => s.category === currentFilter);
+  return stories.filter(s => normalizeCategory(s.category) === currentFilter);
 }
 
 function getCategories() {
-  const cats = new Set(stories.map(s => s.category));
-  return ['all', ...cats];
+  const cats = new Set(stories.map(s => normalizeCategory(s.category)));
+  const known = CATEGORY_ORDER.filter(cat => cats.has(cat));
+  return ['all', ...known];
+}
+
+function getCategoryLabel(cat) {
+  if (cat === 'all') return t('filter_all');
+  const key = CATEGORY_LABEL_KEYS[cat];
+  return key ? t(key) : cat.charAt(0).toUpperCase() + cat.slice(1);
 }
 
 function renderFilters() {
   // 根据分类数组动态生成筛选按钮
   const bar = document.getElementById('filter-bar');
   bar.innerHTML = getCategories().map(cat => {
-    const label = cat === 'all' ? t('filter_all') : cat.charAt(0).toUpperCase() + cat.slice(1);
+    const label = getCategoryLabel(cat);
     const active = cat === currentFilter;
     return `<button onclick="setFilter('${cat}')" class="px-5 py-2 rounded-full text-sm font-label font-bold tracking-wide transition-all whitespace-nowrap ${active ? 'bg-primary text-on-primary shadow-sm' : 'bg-surface text-on-surface-variant hover:bg-surface-container-high border border-outline-variant/30'}">${label}</button>`;
   }).join('');
@@ -425,7 +410,7 @@ function renderGallery() {
       ? `已展示全部 ${filtered.length} 件作品`
       : (filtered.length === stories.length
           ? `Showing all ${filtered.length} works`
-          : `Showing all ${filtered.length} ${currentFilter} works`);
+          : `Showing all ${filtered.length} ${getCategoryLabel(currentFilter)} works`);
   } else {
     btn.style.display = '';
     counter.textContent = currentLang === 'zh'
@@ -455,6 +440,13 @@ function loadMore() {
 }
 
 /* ── Story Modal：作品详情弹窗 ── */
+function splitContentSections(content) {
+  return String(content || '')
+    .split(/\n\s*\n+/)
+    .map(section => section.trim())
+    .filter(Boolean);
+}
+
 function renderModal(index) {
   const s = stories[index];
   const filtered = getFilteredStories();
@@ -462,6 +454,12 @@ function renderModal(index) {
   const hasPrev = filteredIndex > 0;
   const hasNext = filteredIndex < filtered.length - 1;
   currentStoryIndex = index;
+  const contentSections = splitContentSections(s.content);
+  const contentBlocks = contentSections.map((section, idx) => `
+        <div>
+          <p class="text-on-surface-variant font-body leading-relaxed whitespace-pre-line">${section}</p>
+        </div>
+      `).join('');
 
   document.getElementById('story-body').innerHTML = `
     <div class="h-72 md:h-96 overflow-hidden rounded-t-xl">
@@ -472,27 +470,10 @@ function renderModal(index) {
       <h2 class="text-4xl md:text-5xl font-serif italic text-on-surface mb-4">${s.title}</h2>
       <p class="text-lg text-on-surface-variant font-body italic leading-relaxed mb-8 border-l-2 border-primary pl-4">${s.hook}</p>
       <div class="space-y-6 mb-10">
+${contentBlocks || `
         <div>
-          <div class="flex items-center gap-2 mb-2">
-            <span class="material-symbols-outlined text-primary text-lg">auto_awesome</span>
-            <span class="font-label font-bold text-xs uppercase tracking-widest text-on-surface">${t('modal_inspiration')}</span>
-          </div>
-          <p class="text-on-surface-variant font-body leading-relaxed">${s.background}</p>
-        </div>
-        <div>
-          <div class="flex items-center gap-2 mb-2">
-            <span class="material-symbols-outlined text-primary text-lg">psychology</span>
-            <span class="font-label font-bold text-xs uppercase tracking-widest text-on-surface">${t('modal_symbolism')}</span>
-          </div>
-          <p class="text-on-surface-variant font-body leading-relaxed">${s.symbolism}</p>
-        </div>
-        <div>
-          <div class="flex items-center gap-2 mb-2">
-            <span class="material-symbols-outlined text-primary text-lg">brush</span>
-            <span class="font-label font-bold text-xs uppercase tracking-widest text-on-surface">${t('modal_technique')}</span>
-          </div>
-          <p class="text-on-surface-variant font-body leading-relaxed">${s.technique}</p>
-        </div>
+          <p class="text-on-surface-variant font-body leading-relaxed">-</p>
+        </div>`}
       </div>
       <div class="flex items-center justify-between mb-6">
         <button onclick="navStory(-1)" class="flex items-center gap-1 font-label font-bold text-sm ${hasPrev ? 'text-primary hover:opacity-70' : 'text-stone-300 pointer-events-none'} transition-colors">
@@ -546,8 +527,14 @@ document.addEventListener('keydown', function(e) {
 });
 
 /* ── Init：页面首次加载执行 ── */
-applyLang();
-renderFilters();
-renderGallery();
+async function initPage() {
+  await loadI18n();
+  await loadStories();
+  applyLang();
+  renderFilters();
+  renderGallery();
+}
+
+initPage();
 </script>
 </body></html>

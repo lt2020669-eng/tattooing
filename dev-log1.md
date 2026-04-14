@@ -1,8 +1,152 @@
+# NINI 开发日志（现状版）
+
+> 品牌：NINI | Tattoo Studio in Tokyo  
+> 技术栈：单页 `index.html` + Tailwind CDN + 原生 JS + JSON 数据源  
+> 最后更新：2026-04-14
+
+---
+
+## 本次已确认架构
+
+### 内容与配置拆分（已完成）
+
+- 画廊数据已从页面内联迁移到 `data/stories.json`
+- 多语言词典已从页面内联迁移到 `data/i18n.json`
+- 页面初始化顺序：先加载 `i18n`，再加载 `stories`，再渲染 UI
+
+### 画廊模型（当前）
+
+- 分类固定三类（内部值）：
+  - `character`
+  - `life`
+  - `other`
+- 筛选栏文案通过 i18n 映射：
+  - `filter_character`
+  - `filter_life`
+  - `filter_other`
+- `stories` 单条结构（当前实际使用）：
+  - `title`
+  - `tag`
+  - `category`
+  - `featured`
+  - `img`
+  - `hook`
+  - `content`
+
+### 弹窗内容模型（已改）
+
+- 旧模型 `background/symbolism/technique` 已并为单字段 `content`
+- 弹窗中 `content` 会按空行自动分段显示
+- 已取消段落图标与段落标题（纯正文分段）
+
+---
+
+## 本轮主要变更记录
+
+### 1) SEO 与 Hero 文案
+
+- `meta description` 已改为精简版品牌表达
+- Hero 区新增长文故事段（由 i18n 控制）
+
+### 2) 分类体系迁移
+
+- 旧分类（`botanical/geometric/celestial`）迁移到新分类体系
+- 分类按钮由“首字母大写”改为 i18n 显示
+
+### 3) 数据源扩展
+
+- 已批量把本地素材写入 `data/stories.json`
+  - `image/Life/*`
+  - `image/Character/*`
+  - `image/Other/*`
+- 当前很多条目采用“先占位后补文案”的方式（`title/hook/content` 部分为空）
+
+### 4) 校验器建设
+
+- 新增 `validate-content.mjs`
+- 覆盖校验：
+  - `i18n` key 完整性
+  - `stories` 字段完整性
+  - 分类合法性（仅允许 `character/life/other`）
+  - 图片路径存在性（本地）
+- 使用说明：`README-content-validation.md`
+
+---
+
+## 当前状态与注意事项
+
+### 当前存在的“预期中”报错
+
+- 因为大量作品条目仍是占位状态，校验器会报：
+  - `title/hook/content` 为空
+- 这是当前“先挂图后填文案”流程的自然结果，不是程序异常
+
+### 已知风险
+
+- 数据条目较多且手工录入，容易出现重复/空值/路径拼写问题
+- 目前故事文本多为英文单语，切换到中文/日文时正文不会自动本地化
+
+---
+
+## 当前正确的“新增作品”方式
+
+在 `data/stories.json` 追加对象（不要再改 `index.html` 里的内联数据）：
+
+```json
+{
+  "title": "",
+  "tag": "Life",
+  "category": "life",
+  "featured": false,
+  "img": "image/Life/xxx.jpg",
+  "hook": "",
+  "content": ""
+}
+```
+
+可选规则建议：
+
+- 先占位：只填 `img/tag/category/featured`
+- 后补文案：再完善 `title/hook/content`
+- 每次批量改动后运行：
+  - `node validate-content.mjs`
+
+---
+
+## 当前项目结构（实际）
+
+```text
+Xin/
+├── index.html
+├── data/
+│   ├── stories.json
+│   ├── i18n.json
+│   
+├── image/
+│   ├── Artists/
+│   ├── Character/
+│   ├── Life/
+│   └── Other/
+├── validate-content.mjs
+├── dev-log1.md
+├── deep-research-report.md
+└── deep-research-report (1).md
+└── README-content-validation.md
+```
+
+---
+
+## 下一步建议（按优先级）
+
+1. 批量补全空条目的 `title/hook/content`（至少先补 `hook`）
+2. 给 `stories` 增加唯一 `id`（后续维护、排序、去重更稳）
+3. 校验器增加“草稿模式”开关（允许空字段但给 warning）
+4. 再推进三语故事正文（`content` 改为 `{en,zh,ja}`）
 # NINI 开发日志
 
 > 品牌：NINI | Fine-Line & Botanical Tattoo Studio in Tokyo  
 > 技术栈：单页 HTML + Tailwind CDN + 原生 JS  
-> 最后更新：2026-04-13
+> 最后更新：2026-04-14
 
 ---
 

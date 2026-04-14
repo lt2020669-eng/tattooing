@@ -1,0 +1,66 @@
+{
+  "nav_artists": { "en": "Artists", "zh": "艺术家", "ja": "アーティスト" },
+  "nav_gallery": { "en": "Gallery", "zh": "作品集", "ja": "ギャラリー" },
+  "nav_studio": { "en": "Studio", "zh": "工作室", "ja": "スタジオ" },
+  "nav_booking": { "en": "Booking", "zh": "预约", "ja": "予約" },
+  "btn_book_now": { "en": "Book Now", "zh": "立即预约", "ja": "今すぐ予約" },
+  "hero_desc":  {
+    "en": "We are dedicated to creating \"zero-regret\" tattoo art. The secret is simple: we listen to you with all our hearts.",
+    "zh": "我们致力于创造“零后悔”的纹身艺术。秘诀很简单：我们全心全意聆听你的想法。",
+    "ja": "私たちは「後悔のない」タトゥーアートを創ることに尽力しています。秘訣はシンプル。心からあなたの声に耳を傾けることです。"
+  },
+  "hero_story_p1": {
+    "en": "We are more than just tattoo artists; we are the listeners and translators of your story. We love uncovering the meaning behind every design, because what gives a line its soul is always your life experience.",
+    "zh": "我们不只是纹身师，更是你故事的倾听者与翻译者。我们热爱挖掘每个设计背后的意义，因为真正赋予线条灵魂的，始终是你的人生经历。",
+    "ja": "私たちは単なるタトゥーアーティストではなく、あなたの物語を聴き取り、形にする存在です。一本の線に魂を宿すのは、いつもあなたの人生経験だと信じています。"
+  },
+  "hero_story_p2": {
+    "en": "If you want a mark that belongs exclusively to you, or if you'd like to feature your story on our website, please feel free to reach out. Entrust us with your story, and we will turn it into art that accompanies you for a lifetime.",
+    "zh": "如果你想拥有专属于你的印记，或希望把你的故事呈现在我们的网站上，欢迎随时联系。把你的故事交给我们，我们会把它变成陪伴你一生的艺术。",
+    "ja": "あなただけの印を残したい方、またはあなたの物語を私たちのサイトで紹介したい方は、ぜひお気軽にご連絡ください。あなたの物語を、人生に寄り添うアートへと変えていきます。"
+  },
+  "btn_book_session": { "en": "Book Your Session", "zh": "预约体验", "ja": "セッションを予約" },
+  "btn_view_portfolio": { "en": "View Portfolio", "zh": "查看作品", "ja": "作品を見る" },
+  "gallery_title": { "en": "The Collection", "zh": "作品集", "ja": "コレクション" },
+  "gallery_subtitle": {
+    "en": "Selected works celebrating the delicate balance of nature and geometric precision.",
+    "zh": "精选作品，致敬自然之美与几何之精。",
+    "ja": "自然の美しさと幾何学的な精密さの絶妙なバランスを称える厳選作品。"
+  },
+  "btn_load_more": { "en": "View More Works", "zh": "查看更多作品", "ja": "もっと見る" },
+  "gallery_view_story": { "en": "View Story", "zh": "查看故事", "ja": "ストーリーを見る" },
+  "gallery_no_works": {
+    "en": "No works in this category yet — stay tuned.",
+    "zh": "该分类暂无作品，敬请期待。",
+    "ja": "このカテゴリにはまだ作品がありません。お楽しみに。"
+  },
+  "filter_all": { "en": "All", "zh": "全部", "ja": "すべて" },
+  "filter_character": { "en": "Character", "zh": "人物", "ja": "人物" },
+  "filter_life": { "en": "Life", "zh": "生活", "ja": "ライフ" },
+  "filter_other": { "en": "Other", "zh": "其他", "ja": "その他" },
+  "booking_title": { "en": "booking", "zh": "预定", "ja": "予約" },
+  "booking_embed_note": {
+    "en": "Choose your preferred slot directly from our live calendar.",
+    "zh": "请直接在实时日历中选择你偏好的预约时段。",
+    "ja": "ライブカレンダーから直接ご希望の時間をお選びください。"
+  },
+  "locations_title": { "en": "Find the Light", "zh": "寻找光影", "ja": "光を探す" },
+  "locations_subtitle": { "en": "Where our stories come to life.", "zh": "故事在这里发生。", "ja": "物語が生まれる場所。" },
+  "loc_hitomi_name": { "en": "Hitomi.Studio", "zh": "Hitomi.Studio", "ja": "Hitomi.Studio" },
+  "loc_hitomi_desc": {
+    "en": "A cozy creative space nestled in Tokyo's Taito district, where coffee aroma meets the gentle hum of tattoo machines. Walk-ins welcome — or book ahead for a dedicated session.",
+    "zh": "坐落于东京台东区的温馨创作空间，咖啡香气与纹身机的轻柔嗡鸣交织其中。欢迎随时到访，也可提前预约专属时段。",
+    "ja": "東京・台東区に佇む居心地よいクリエイティブスペース。コーヒーの香りとタトゥーマシンの柔らかな音が交差します。飛び込み歓迎、または事前予約も承ります。"
+  },
+  "footer_tagline": {
+    "en": "© {year} NINI. Crafted for the Sun-Drenched Soul. Every needle stroke is a word in the story of you.",
+    "zh": "© {year} NINI. 为热爱阳光的灵魂而生。每一针都是你故事中的一个字。",
+    "ja": "© {year} NINI. 太陽に満ちた魂のために。すべての針の一刺しが、あなたの物語の一言。"
+  },
+  "footer_privacy": { "en": "Privacy", "zh": "隐私政策", "ja": "プライバシー" },
+  "footer_terms": { "en": "Terms", "zh": "服务条款", "ja": "利用規約" },
+  "footer_contact": { "en": "Contact", "zh": "联系我们", "ja": "お問い合わせ" },
+  "modal_prev": { "en": "Prev", "zh": "上一个", "ja": "前へ" },
+  "modal_next": { "en": "Next", "zh": "下一个", "ja": "次へ" },
+  "btn_book_tattoo": { "en": "Book Your Tattoo Now", "zh": "立即预约纹身", "ja": "今すぐタトゥーを予約" }
+}
