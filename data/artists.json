@@ -1,0 +1,38 @@
+[
+  {
+    "id": "xin",
+    "featured": true,
+    "sort": 1,
+    "active": true,
+    "avatar": "image/Artists/artistXin.jpg",
+    "avatar_alt": "NINI tattoo artist portrait",
+    "hero_object_position": "center",
+    "card_object_position": "center",
+    "instagram": "https://www.instagram.com/ninitattooing?igsh=bnBjaGswZnNlOGNy&utm_source=qr",
+    "tiktok": "https://www.tiktok.com/@ninitattooing?_r=1&_t=ZS-95Wk8PoCbWW",
+    "booking_url": "https://calendly.com/ninitattooing/tattoo-consultation",
+    "story_ids": [
+      "be-yourself",
+      "echoed-scar",
+      "blooming-from-the-scar",
+      "i-love-you-and-you-tamed-me"
+    ]
+  },
+  {
+    "id": "chuang",
+    "featured": false,
+    "sort": 2,
+    "active": true,
+    "avatar": "image/Artists/artistChuang.jpg",
+    "avatar_alt": "Chuang tattoo artist portrait",
+    "hero_object_position": "center 22%",
+    "card_object_position": "center 22%",
+    "instagram": "https://www.instagram.com/ninitattooing?igsh=bnBjaGswZnNlOGNy&utm_source=qr",
+    "tiktok": "https://www.tiktok.com/@ninitattooing?_r=1&_t=ZS-95Wk8PoCbWW",
+    "booking_url": "https://calendly.com/ninitattooing/tattoo-consultation",
+    "story_ids": [
+      "love-without-shackles",
+      "fox"
+    ]
+  }
+]

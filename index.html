@@ -107,6 +107,7 @@
 <a href="#artists" data-i18n="nav_artists">Artists</a>
 <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
 <a href="#price" data-i18n="nav_price">Price</a>
+<a href="#process" data-i18n="nav_process">Process</a>
 <a href="#booking" data-i18n="nav_booking">Booking</a>
 <a href="#studio" data-i18n="nav_studio">Studio</a>
 <div class="relative group">
@@ -138,17 +139,17 @@
 <section class="max-w-screen-2xl mx-auto px-12 pb-24" id="artists">
 <div class="flex flex-col items-center text-center">
 <div class="relative mb-12">
-<img class="w-48 h-48 rounded-full object-cover border-4 border-surface-container-low p-1 shadow-sm" alt="NINI tattoo artist portrait" src="image/Artists/artistXin.jpg"/>
+<img id="artist-avatar" class="w-48 h-48 rounded-full object-cover border-4 border-surface-container-low p-1 shadow-sm" alt="NINI tattoo artist portrait" src="image/Artists/artistXin.jpg"/>
 </div>
-<h1 class="text-6xl md:text-8xl font-serif italic text-on-surface mb-6 tracking-tight leading-none">
+<h1 id="artist-name" class="text-6xl md:text-8xl font-serif italic text-on-surface mb-6 tracking-tight leading-none">
                     NINI
                 </h1>
-<p class="max-w-2xl text-xl text-on-surface-variant font-body leading-relaxed mb-10" data-i18n="hero_desc">
-                    A boutique sanctuary dedicated to the art of fine-line and botanical tattooing. Inspired by the interplay of light and leaves, we create permanent poetry on skin.
+<p id="artist-intro" class="max-w-2xl text-xl text-on-surface-variant font-body leading-relaxed mb-10">
+                    Dedicated to creating zero-regret tattoo art through deep listening and meaningful storytelling.
                 </p>
 <div class="max-w-3xl text-left text-on-surface-variant font-body leading-relaxed space-y-4 mb-10">
-<p data-i18n="hero_story_p1"></p>
-<p data-i18n="hero_story_p2"></p>
+<p id="artist-bio-1">We are more than just tattoo artists; we are the listeners and translators of your story. We love uncovering the meaning behind every design, because what gives a line its soul is always your life experience.</p>
+<p id="artist-bio-2">If you want a mark that belongs exclusively to you, or if you'd like to feature your story on our website, please feel free to reach out. Entrust us with your story, and we will turn it into art that accompanies you for a lifetime.</p>
 </div>
 <div class="flex gap-4">
 <button class="bg-primary text-on-primary px-10 py-4 rounded-full font-label font-bold text-lg hover:opacity-90 transition-all shadow-lg shadow-primary/10" data-i18n="btn_book_session" onclick="scrollToBooking()">
@@ -157,6 +158,9 @@
 <a href="#gallery" class="border border-outline-variant text-on-surface px-10 py-4 rounded-full font-label font-bold text-lg hover:bg-surface-container-low transition-all inline-block no-underline" data-i18n="btn_view_portfolio">
                         View Portfolio
                     </a>
+</div>
+<div class="w-full max-w-5xl mt-14">
+<div class="flex items-center justify-center gap-3 overflow-x-auto pb-2 px-1" id="artist-thumbs"></div>
 </div>
 </div>
 </section>
@@ -239,6 +243,33 @@
 <div class="text-center">
 <p class="text-on-surface-variant font-body mb-6 max-w-3xl mx-auto leading-relaxed" data-i18n="care_note">These are general guidelines for most appointments. If your design, placement, or skin condition needs extra care, we will walk you through it personally.</p>
 <button class="bg-primary text-on-primary px-10 py-4 rounded-full font-label font-bold text-lg hover:opacity-90 transition-all shadow-lg shadow-primary/10" data-i18n="care_cta" onclick="scrollToBooking()">Choose Your Slot</button>
+</div>
+</div>
+</section>
+<!-- Process：向客户清楚说明预约后会发生什么，降低对问卷、定金与到店流程的不确定感 -->
+<section class="py-32 max-w-6xl mx-auto px-12" id="process">
+<div class="bg-surface rounded-xl border border-outline-variant/30 p-8 md:p-14 shadow-sm">
+<div class="text-center mb-12">
+<h2 class="text-5xl font-serif text-on-surface italic mb-4" data-i18n="process_title">How It Works</h2>
+<p class="text-on-surface-variant font-body max-w-3xl mx-auto leading-relaxed" data-i18n="process_subtitle">From booking to arrival, here is exactly what happens next so you know when to fill in your form, pay the deposit, and prepare for your session.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+<div class="bg-surface-container-low rounded-2xl p-6 border border-outline-variant/20">
+<h3 class="text-xl font-serif italic text-on-surface mb-3" data-i18n="process_step_1_title">1. Book a time</h3>
+<p class="text-on-surface-variant font-body leading-relaxed" data-i18n="process_step_1_body">Open our Calendly page, choose the time that suits you best, and complete the appointment booking first.</p>
+</div>
+<div class="bg-surface-container-low rounded-2xl p-6 border border-outline-variant/20">
+<h3 class="text-xl font-serif italic text-on-surface mb-3" data-i18n="process_step_2_title">2. Complete the pre-tattoo form</h3>
+<p class="text-on-surface-variant font-body leading-relaxed" data-i18n="process_step_2_body">After booking, you will be guided to a short pre-tattoo form so we can understand your design idea, health notes, and communication needs.</p>
+</div>
+<div class="bg-surface-container-low rounded-2xl p-6 border border-outline-variant/20">
+<h3 class="text-xl font-serif italic text-on-surface mb-3" data-i18n="process_step_3_title">3. Pay the deposit</h3>
+<p class="text-on-surface-variant font-body leading-relaxed" data-i18n="process_step_3_body">Once the form is completed, you will receive the Stripe payment step. A 1100 JPY deposit is required to confirm your appointment.</p>
+</div>
+<div class="bg-surface-container-low rounded-2xl p-6 border border-outline-variant/20">
+<h3 class="text-xl font-serif italic text-on-surface mb-3" data-i18n="process_step_4_title">4. Arrive for your session</h3>
+<p class="text-on-surface-variant font-body leading-relaxed" data-i18n="process_step_4_body">On the day of your tattoo, we will review the placement and final details with you before starting the session.</p>
+</div>
 </div>
 </div>
 </section>
@@ -327,6 +358,9 @@
 <script>
 /* ── i18n：多语言词典与切换逻辑（外部 JSON） ── */
 let i18n = {};
+let artists = [];
+let artistsLanguage = {};
+let activeArtistId = localStorage.getItem('nini-active-artist') || '';
 
 async function loadI18n() {
   try {
@@ -392,6 +426,7 @@ function setLang(lang) {
   currentLang = lang;
   localStorage.setItem('nini-lang', lang);
   applyLang();
+  renderArtists();
   renderFilters();
   renderGallery();
   if (currentStoryIndex !== -1) renderModal(currentStoryIndex);
@@ -406,6 +441,169 @@ function scrollToBooking() {
 
 function openBookingPage() {
   window.open('https://calendly.com/ninitattooing/tattoo-consultation', '_blank', 'noopener');
+}
+
+/* ── Artists Data：艺术家数据源（外部 JSON） ── */
+async function loadArtists() {
+  try {
+    const response = await fetch('data/artists.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    if (!Array.isArray(data)) throw new Error('artists.json is not an array');
+    artists = data;
+  } catch (error) {
+    console.error('Failed to load artists.json:', error);
+    artists = [];
+  }
+}
+
+async function loadArtistsLanguage() {
+  try {
+    const response = await fetch('data/artistslanguage.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    if (!data || typeof data !== 'object' || Array.isArray(data)) {
+      throw new Error('artistslanguage.json is not an object');
+    }
+    artistsLanguage = data;
+  } catch (error) {
+    console.error('Failed to load artistslanguage.json:', error);
+    artistsLanguage = {};
+  }
+}
+
+function getLocalizedArtistField(artist, field) {
+  const id = artist?.id;
+  const localized = id ? artistsLanguage?.[id]?.[field] : null;
+  if (localized && typeof localized === 'object' && !Array.isArray(localized)) {
+    if (Array.isArray(localized[currentLang])) return localized[currentLang];
+    return localized[currentLang] || localized.en || '';
+  }
+  return artist?.[field] || '';
+}
+
+function getPrimaryArtist() {
+  const activeArtists = artists
+    .filter(artist => artist?.active !== false)
+    .sort((a, b) => {
+      if (a?.featured && !b?.featured) return -1;
+      if (!a?.featured && b?.featured) return 1;
+      return (a?.sort ?? Number.MAX_SAFE_INTEGER) - (b?.sort ?? Number.MAX_SAFE_INTEGER);
+    });
+  return activeArtists[0] || null;
+}
+
+function getSortedActiveArtists() {
+  return artists
+    .filter(artist => artist?.active !== false)
+    .sort((a, b) => {
+      if (a?.featured && !b?.featured) return -1;
+      if (!a?.featured && b?.featured) return 1;
+      return (a?.sort ?? Number.MAX_SAFE_INTEGER) - (b?.sort ?? Number.MAX_SAFE_INTEGER);
+    });
+}
+
+function getActiveArtist() {
+  const activeArtists = getSortedActiveArtists();
+  if (activeArtists.length === 0) return null;
+  const matchedArtist = activeArtists.find(artist => artist.id === activeArtistId);
+  return matchedArtist || activeArtists[0];
+}
+
+function splitArtistBioSections(content) {
+  return String(content || '')
+    .split(/\n\s*\n+/)
+    .map(section => section.trim())
+    .filter(Boolean);
+}
+
+function setActiveArtist(artistId) {
+  activeArtistId = artistId;
+  localStorage.setItem('nini-active-artist', artistId);
+  renderArtists();
+}
+
+window.setActiveArtist = setActiveArtist;
+
+function renderArtistThumbs(activeArtist) {
+  const thumbsEl = document.getElementById('artist-thumbs');
+  if (!thumbsEl) return;
+
+  const visibleArtists = getSortedActiveArtists();
+  thumbsEl.innerHTML = visibleArtists.map(artist => {
+    const artistName = getLocalizedArtistField(artist, 'name') || artist.id;
+    const artistTitle = getLocalizedArtistField(artist, 'title');
+    const thumbTitle = artistTitle ? `${artistName} · ${artistTitle}` : artistName;
+    const isActive = activeArtist?.id === artist.id;
+    const cardObjectPosition =
+      typeof artist.card_object_position === 'string' && artist.card_object_position.trim()
+        ? artist.card_object_position.trim()
+        : 'center';
+
+    return `
+      <button
+        type="button"
+        data-artist-id="${artist.id}"
+        aria-pressed="${isActive ? 'true' : 'false'}"
+        title="${thumbTitle}"
+        class="group shrink-0 flex flex-col items-center gap-3 rounded-2xl px-3 py-3 transition-all min-w-[92px] ${isActive ? 'bg-surface-container-low shadow-sm ring-1 ring-primary/30' : 'hover:bg-surface-container-low/70'}"
+      >
+        <span class="w-16 h-16 rounded-full overflow-hidden border ${isActive ? 'border-primary shadow-md shadow-primary/10' : 'border-outline-variant/40'}">
+          <img src="${artist.avatar}" alt="${artist.avatar_alt || `${artistName} portrait`}" class="w-full h-full object-cover" style="object-position: ${cardObjectPosition};"/>
+        </span>
+        <span class="text-center">
+          <span class="block text-xs font-label font-bold tracking-wide ${isActive ? 'text-primary' : 'text-on-surface'}">${artistName}</span>
+          <span class="block text-[11px] text-on-surface-variant">${artistTitle || ''}</span>
+        </span>
+      </button>
+    `;
+  }).join('');
+
+  thumbsEl.querySelectorAll('[data-artist-id]').forEach(button => {
+    button.addEventListener('click', () => {
+      setActiveArtist(button.getAttribute('data-artist-id'));
+    });
+  });
+}
+
+function renderArtists() {
+  const primaryArtist = getPrimaryArtist();
+  if (!primaryArtist) return;
+  const activeArtist = getActiveArtist();
+  if (!activeArtist) return;
+
+  const avatarEl = document.getElementById('artist-avatar');
+  const nameEl = document.getElementById('artist-name');
+  const introEl = document.getElementById('artist-intro');
+  const bioEls = [
+    document.getElementById('artist-bio-1'),
+    document.getElementById('artist-bio-2')
+  ];
+
+  const artistName = getLocalizedArtistField(activeArtist, 'name') || activeArtist.id || 'NINI';
+  const artistIntro = getLocalizedArtistField(activeArtist, 'intro');
+  const artistBio = splitArtistBioSections(getLocalizedArtistField(activeArtist, 'bio'));
+  const heroObjectPosition =
+    typeof activeArtist.hero_object_position === 'string' && activeArtist.hero_object_position.trim()
+      ? activeArtist.hero_object_position.trim()
+      : 'center';
+
+  if (avatarEl && typeof activeArtist.avatar === 'string' && activeArtist.avatar.trim()) {
+    avatarEl.src = activeArtist.avatar;
+    avatarEl.alt = activeArtist.avatar_alt || `${artistName} portrait`;
+    avatarEl.style.objectPosition = heroObjectPosition;
+  }
+
+  if (nameEl) nameEl.textContent = artistName;
+  if (introEl) introEl.textContent = artistIntro || introEl.textContent;
+
+  bioEls.forEach((bioEl, index) => {
+    if (!bioEl) return;
+    bioEl.textContent = artistBio[index] || '';
+    bioEl.style.display = artistBio[index] ? '' : 'none';
+  });
+
+  renderArtistThumbs(activeArtist);
 }
 
 /* ── Stories Data：作品数据源（外部 JSON） ── */
@@ -682,12 +880,15 @@ document.addEventListener('keydown', function(e) {
 
 /* ── Init：页面首次加载执行 ── */
 async function initPage() {
-  // 首次加载按顺序读取文案、结构化故事数据和多语言故事内容
+  // 首次加载按顺序读取文案、艺术家数据、结构化故事数据和多语言故事内容
   await loadI18n();
+  await loadArtists();
+  await loadArtistsLanguage();
   await loadStories();
   await loadStoriesLanguage();
-  // 数据就绪后再统一应用语言、绘制筛选器与画廊
+  // 数据就绪后再统一应用语言、绘制艺术家区块、筛选器与画廊
   applyLang();
+  renderArtists();
   renderFilters();
   renderGallery();
 }

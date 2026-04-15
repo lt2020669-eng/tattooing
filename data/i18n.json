@@ -2,24 +2,10 @@
   "nav_artists": { "en": "Artists", "zh": "艺术家", "ja": "アーティスト" },
   "nav_gallery": { "en": "Gallery", "zh": "作品集", "ja": "ギャラリー" },
   "nav_price": { "en": "Price", "zh": "价格", "ja": "料金" },
+  "nav_process": { "en": "Process", "zh": "预约流程", "ja": "ご予約の流れ" },
   "nav_studio": { "en": "Studio", "zh": "工作室", "ja": "スタジオ" },
   "nav_booking": { "en": "Booking", "zh": "预约", "ja": "予約" },
   "btn_book_now": { "en": "Book Now", "zh": "立即预约", "ja": "今すぐ予約" },
-  "hero_desc":  {
-    "en": "We are dedicated to creating \"zero-regret\" tattoo art. The secret is simple: we listen to you with all our hearts.",
-    "zh": "我们致力于创造“零后悔”的纹身艺术。秘诀很简单：我们全心全意聆听你的想法。",
-    "ja": "私たちは「後悔のない」タトゥーアートを創ることに尽力しています。秘訣はシンプル。心からあなたの声に耳を傾けることです。"
-  },
-  "hero_story_p1": {
-    "en": "We are more than just tattoo artists; we are the listeners and translators of your story. We love uncovering the meaning behind every design, because what gives a line its soul is always your life experience.",
-    "zh": "我们不只是纹身师，更是你故事的倾听者与翻译者。我们热爱挖掘每个设计背后的意义，因为真正赋予线条灵魂的，始终是你的人生经历。",
-    "ja": "私たちは単なるタトゥーアーティストではなく、あなたの物語を聴き取り、形にする存在です。一本の線に魂を宿すのは、いつもあなたの人生経験だと信じています。"
-  },
-  "hero_story_p2": {
-    "en": "If you want a mark that belongs exclusively to you, or if you'd like to feature your story on our website, please feel free to reach out. Entrust us with your story, and we will turn it into art that accompanies you for a lifetime.",
-    "zh": "如果你想拥有专属于你的印记，或希望把你的故事呈现在我们的网站上，欢迎随时联系。把你的故事交给我们，我们会把它变成陪伴你一生的艺术。",
-    "ja": "あなただけの印を残したい方、またはあなたの物語を私たちのサイトで紹介したい方は、ぜひお気軽にご連絡ください。あなたの物語を、人生に寄り添うアートへと変えていきます。"
-  },
   "btn_book_session": { "en": "Book Your Session", "zh": "预约体验", "ja": "セッションを予約" },
   "btn_view_portfolio": { "en": "View Portfolio", "zh": "查看作品", "ja": "作品を見る" },
   "gallery_title": { "en": "The Collection", "zh": "作品集", "ja": "コレクション" },
@@ -164,6 +150,56 @@
     "en": "Open Booking Page",
     "zh": "打开预约页面",
     "ja": "予約ページを開く"
+  },
+  "process_title": {
+    "en": "How It Works",
+    "zh": "预约流程",
+    "ja": "ご予約の流れ"
+  },
+  "process_subtitle": {
+    "en": "From booking to arrival, here is exactly what happens next so you know when to fill in your form, pay the deposit, and prepare for your session.",
+    "zh": "从预约到到店，以下是完整流程说明。你可以清楚知道什么时候填写问卷、什么时候支付定金，以及纹身当天会如何进行。",
+    "ja": "予約からご来店までの流れをまとめました。フォーム入力のタイミング、デポジットのお支払い時期、当日の進み方を事前にご確認いただけます。"
+  },
+  "process_step_1_title": {
+    "en": "1. Book a time",
+    "zh": "1. 选择预约时间",
+    "ja": "1. 日時を予約する"
+  },
+  "process_step_1_body": {
+    "en": "Open our Calendly page, choose the time that suits you best, and complete the appointment booking first.",
+    "zh": "先打开我们的 Calendly 预约页，选择最适合你的时间并完成预约。",
+    "ja": "まず Calendly の予約ページを開き、ご都合のよい日時を選んで予約を完了してください。"
+  },
+  "process_step_2_title": {
+    "en": "2. Complete the pre-tattoo form",
+    "zh": "2. 填写术前问卷",
+    "ja": "2. 施術前フォームに記入する"
+  },
+  "process_step_2_body": {
+    "en": "After booking, you will be guided to a short pre-tattoo form so we can understand your design idea, health notes, and communication needs.",
+    "zh": "预约完成后，你会进入一个简短的术前问卷，帮助我们了解你的设计想法、身体状况和沟通需求。",
+    "ja": "予約完了後、短い施術前フォームへ進みます。デザインの方向性、体調面の注意点、コミュニケーションのご希望を事前に把握するためです。"
+  },
+  "process_step_3_title": {
+    "en": "3. Pay the deposit",
+    "zh": "3. 支付定金",
+    "ja": "3. デポジットを支払う"
+  },
+  "process_step_3_body": {
+    "en": "Once the form is completed, you will receive the Stripe payment step. A 1100 JPY deposit is required to confirm your appointment.",
+    "zh": "问卷填写完成后，会进入 Stripe 支付步骤。支付 1100 日元定金后，你的预约才算正式确认。",
+    "ja": "フォーム入力後、Stripe でのお支払い手順へ進みます。1100円のデポジットのお支払いをもって、ご予約確定となります。"
+  },
+  "process_step_4_title": {
+    "en": "4. Arrive for your session",
+    "zh": "4. 按预约时间到店",
+    "ja": "4. 予約時間にご来店"
+  },
+  "process_step_4_body": {
+    "en": "On the day of your tattoo, we will review the placement and final details with you before starting the session.",
+    "zh": "纹身当天按预约时间到店，我们会先和你确认位置与最后细节，再开始施作。",
+    "ja": "当日はご予約時間にご来店ください。施術前に位置や最終ディテールを確認してから施術を開始します。"
   },
   "booking_title": { "en": "booking", "zh": "预定", "ja": "予約" },
   "booking_pre_note": {

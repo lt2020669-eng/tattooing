@@ -1,0 +1,90 @@
+{
+  "xin": {
+    "name": {
+      "en": "NINI",
+      "zh": "NINI",
+      "ja": "NINI"
+    },
+    "title": {
+      "en": "Tattoo Artist",
+      "zh": "纹身师",
+      "ja": "タトゥーアーティスト"
+    },
+    "intro": {
+      "en": "Dedicated to creating zero-regret tattoo art through deep listening and meaningful storytelling.",
+      "zh": "通过深度倾听与有意义的叙事，创作让人不会后悔的纹身作品。",
+      "ja": "深い対話と意味のある物語を通して、後悔のないタトゥーを生み出します。"
+    },
+    "bio": {
+      "en": "We are more than just tattoo artists; we are the listeners and translators of your story. We love uncovering the meaning behind every design, because what gives a line its soul is always your life experience.\n\nIf you want a mark that belongs exclusively to you, or if you'd like to feature your story on our website, please feel free to reach out. Entrust us with your story, and we will turn it into art that accompanies you for a lifetime.",
+      "zh": "我们不只是纹身师，更是你故事的倾听者与翻译者。我们热爱挖掘每个设计背后的意义，因为真正赋予线条灵魂的，始终是你的人生经历。\n\n如果你想拥有专属于你的印记，或希望把你的故事呈现在我们的网站上，欢迎随时联系。把你的故事交给我们，我们会把它变成陪伴你一生的艺术。",
+      "ja": "私たちは単なるタトゥーアーティストではなく、あなたの物語を聴き取り、形にする存在です。一本の線に魂を宿すのは、いつもあなたの人生経験だと信じています。\n\nあなただけの印を残したい方、またはあなたの物語を私たちのサイトで紹介したい方は、ぜひお気軽にご連絡ください。あなたの物語を、人生に寄り添うアートへと変えていきます。"
+    },
+    "specialties": {
+      "en": [
+        "Fine line",
+        "Story-driven design",
+        "Custom tattoos"
+      ],
+      "zh": [
+        "细线风格",
+        "故事型设计",
+        "定制纹身"
+      ],
+      "ja": [
+        "ファインライン",
+        "物語性のあるデザイン",
+        "カスタムタトゥー"
+      ]
+    },
+    "philosophy": {
+      "en": "A tattoo should feel personal, honest, and timeless.",
+      "zh": "好的纹身应该是私人的、真诚的，也是能长期陪伴你的。",
+      "ja": "良いタトゥーは、個人的で、誠実で、長く寄り添うものであるべきだと考えています。"
+    }
+  },
+  "chuang": {
+    "name": {
+      "en": "Chuang",
+      "zh": "Chuang",
+      "ja": "Chuang"
+    },
+    "title": {
+      "en": "Tattoo Artist",
+      "zh": "纹身师",
+      "ja": "タトゥーアーティスト"
+    },
+    "intro": {
+      "en": "Drawn to clean lines, calm compositions, and tattoos that feel quietly personal.",
+      "zh": "偏爱干净线条、平静构图，以及带有安静个人气质的纹身表达。",
+      "ja": "クリーンな線、静かな構図、そしてさりげなく個性が宿るタトゥー表現を大切にしています。"
+    },
+    "bio": {
+      "en": "Chuang approaches tattooing with a calm and attentive rhythm. She values designs that do not shout for attention, but stay with the wearer in a more intimate and lasting way.\n\nHer visual language leans toward clarity, softness, and emotional restraint. Whether the piece is text-based or image-led, she is interested in helping clients find a version that feels balanced, wearable, and true to their story.",
+      "zh": "Chuang 以平静而专注的节奏进入纹身创作。她偏爱那些不会大声喧哗、却能以更亲密而持久的方式陪伴佩戴者的设计。\n\n她的视觉语言更接近清晰、柔和与克制的情绪表达。无论是文字型还是图像型作品，她都希望帮助来访者找到一种既平衡、适合长期佩戴，又忠于自身故事的版本。",
+      "ja": "Chuang は落ち着いたリズムと丁寧な対話を大切にしながらタトゥー制作に向き合います。強く主張しすぎるのではなく、身につける人に静かに寄り添い続けるデザインを好みます。\n\n彼女のビジュアル言語は、明快さ、やわらかさ、そして感情の節度に近いところにあります。文字作品でもイメージ主体の作品でも、その人の物語に誠実で、長く身につけやすいかたちを一緒に探していきます。"
+    },
+    "specialties": {
+      "en": [
+        "Minimal linework",
+        "Calm compositions",
+        "Subtle personal symbols"
+      ],
+      "zh": [
+        "极简线条",
+        "平静构图",
+        "含蓄的个人象征"
+      ],
+      "ja": [
+        "ミニマルなラインワーク",
+        "静かな構図",
+        "さりげない個人的シンボル"
+      ]
+    },
+    "philosophy": {
+      "en": "The most lasting tattoos often speak in a softer voice.",
+      "zh": "最能长期陪伴人的纹身，往往不是最响亮的，而是最安静贴身的那一种。",
+      "ja": "長く寄り添うタトゥーほど、やわらかな声で語るものだと考えています。"
+    }
+  }
+}

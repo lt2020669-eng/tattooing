@@ -3,6 +3,8 @@ import path from "node:path";
 
 const ROOT = process.cwd();
 const INDEX_PATH = path.join(ROOT, "index.html");
+const ARTISTS_PATH = path.join(ROOT, "data", "artists.json");
+const ARTISTS_LANG_PATH = path.join(ROOT, "data", "artistslanguage.json");
 const STORIES_PATH = path.join(ROOT, "data", "stories.json");
 const STORIES_LANG_PATH = path.join(ROOT, "data", "storieslanguage.json");
 const I18N_PATH = path.join(ROOT, "data", "i18n.json");
@@ -34,6 +36,16 @@ function readJson(filePath) {
 
 function isNonEmptyString(value) {
   return typeof value === "string" && value.trim().length > 0;
+}
+
+function isValidUrl(value) {
+  if (!isNonEmptyString(value)) return false;
+  try {
+    new URL(value);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 function collectI18nKeysFromIndex(html) {
@@ -105,6 +117,23 @@ function validateStoryLocalImagePath(imgPath, storyIndex) {
   const resolved = path.resolve(ROOT, imgPath);
   if (!fs.existsSync(resolved)) {
     errors.push(`stories[${storyIndex}].img points to missing file: ${imgPath}`);
+  }
+}
+
+function validateLocalImagePath(imgPath, label) {
+  if (!isNonEmptyString(imgPath)) {
+    errors.push(`${label} must be a non-empty string.`);
+    return;
+  }
+
+  if (/^https?:\/\//i.test(imgPath)) {
+    warnings.push(`${label} is a remote URL (existence not checked): ${imgPath}`);
+    return;
+  }
+
+  const resolved = path.resolve(ROOT, imgPath);
+  if (!fs.existsSync(resolved)) {
+    errors.push(`${label} points to missing file: ${imgPath}`);
   }
 }
 
@@ -259,6 +288,177 @@ function validateStoriesLanguage(storiesLanguage, storyIds) {
   }
 }
 
+function validateArtists(artists, storyIds = new Set()) {
+  if (!Array.isArray(artists)) {
+    errors.push("data/artists.json must be an array.");
+    return null;
+  }
+
+  const requiredFields = ["id", "featured", "sort", "active", "avatar"];
+  const optionalFields = new Set([
+    "avatar_alt",
+    "hero_object_position",
+    "card_object_position",
+    "instagram",
+    "tiktok",
+    "booking_url",
+    "story_ids"
+  ]);
+
+  const seenIds = new Set();
+
+  artists.forEach((artist, idx) => {
+    if (!artist || typeof artist !== "object" || Array.isArray(artist)) {
+      errors.push(`artists[${idx}] must be an object.`);
+      return;
+    }
+
+    for (const field of requiredFields) {
+      if (!Object.prototype.hasOwnProperty.call(artist, field)) {
+        errors.push(`artists[${idx}] missing required field: "${field}"`);
+      }
+    }
+
+    for (const field of Object.keys(artist)) {
+      if (!requiredFields.includes(field) && !optionalFields.has(field)) {
+        warnings.push(`artists[${idx}] contains unknown field: "${field}"`);
+      }
+    }
+
+    if (!isNonEmptyString(artist.id)) {
+      errors.push(`artists[${idx}].id must be a non-empty string.`);
+    } else if (seenIds.has(artist.id)) {
+      errors.push(`Duplicate artist id detected: "${artist.id}"`);
+    } else {
+      seenIds.add(artist.id);
+    }
+
+    if (typeof artist.featured !== "boolean") {
+      errors.push(`artists[${idx}].featured must be boolean.`);
+    }
+
+    if (!Number.isFinite(artist.sort)) {
+      errors.push(`artists[${idx}].sort must be a finite number.`);
+    }
+
+    if (typeof artist.active !== "boolean") {
+      errors.push(`artists[${idx}].active must be boolean.`);
+    }
+
+    validateLocalImagePath(artist.avatar, `artists[${idx}].avatar`);
+
+    if (
+      Object.prototype.hasOwnProperty.call(artist, "avatar_alt") &&
+      !isNonEmptyString(artist.avatar_alt)
+    ) {
+      errors.push(`artists[${idx}].avatar_alt must be a non-empty string when provided.`);
+    }
+
+    if (
+      Object.prototype.hasOwnProperty.call(artist, "hero_object_position") &&
+      !isNonEmptyString(artist.hero_object_position)
+    ) {
+      errors.push(`artists[${idx}].hero_object_position must be a non-empty string when provided.`);
+    }
+
+    if (
+      Object.prototype.hasOwnProperty.call(artist, "card_object_position") &&
+      !isNonEmptyString(artist.card_object_position)
+    ) {
+      errors.push(`artists[${idx}].card_object_position must be a non-empty string when provided.`);
+    }
+
+    for (const field of ["instagram", "tiktok", "booking_url"]) {
+      if (
+        Object.prototype.hasOwnProperty.call(artist, field) &&
+        !isValidUrl(artist[field])
+      ) {
+        errors.push(`artists[${idx}].${field} must be a valid URL when provided.`);
+      }
+    }
+
+    if (Object.prototype.hasOwnProperty.call(artist, "story_ids")) {
+      if (!Array.isArray(artist.story_ids)) {
+        errors.push(`artists[${idx}].story_ids must be an array when provided.`);
+      } else {
+        artist.story_ids.forEach((storyId, storyIdx) => {
+          if (!isNonEmptyString(storyId)) {
+            errors.push(`artists[${idx}].story_ids[${storyIdx}] must be a non-empty string.`);
+            return;
+          }
+          if (storyIds.size > 0 && !storyIds.has(storyId)) {
+            warnings.push(`artists[${idx}].story_ids[${storyIdx}] references unknown story id: "${storyId}"`);
+          }
+        });
+      }
+    }
+  });
+
+  return seenIds;
+}
+
+function validateArtistsLanguage(artistsLanguage, artistIds) {
+  if (!artistsLanguage || typeof artistsLanguage !== "object" || Array.isArray(artistsLanguage)) {
+    errors.push("data/artistslanguage.json must be an object.");
+    return;
+  }
+
+  const textFields = ["name", "title", "intro", "bio", "philosophy"];
+
+  for (const id of artistIds) {
+    const entry = artistsLanguage[id];
+    if (!entry || typeof entry !== "object" || Array.isArray(entry)) {
+      errors.push(`artistslanguage missing object for artist id "${id}".`);
+      continue;
+    }
+
+    for (const field of textFields) {
+      const fieldObj = entry[field];
+      if (!fieldObj || typeof fieldObj !== "object" || Array.isArray(fieldObj)) {
+        errors.push(`artistslanguage["${id}"].${field} must be an object with en/zh/ja.`);
+        continue;
+      }
+
+      if (!isNonEmptyString(fieldObj.en)) {
+        errors.push(`artistslanguage["${id}"].${field}.en must be non-empty.`);
+      }
+
+      if (!isNonEmptyString(fieldObj.zh)) {
+        warnings.push(`artistslanguage["${id}"].${field}.zh is empty (fallback to en).`);
+      }
+
+      if (!isNonEmptyString(fieldObj.ja)) {
+        warnings.push(`artistslanguage["${id}"].${field}.ja is empty (fallback to en).`);
+      }
+    }
+
+    const specialties = entry.specialties;
+    if (!specialties || typeof specialties !== "object" || Array.isArray(specialties)) {
+      errors.push(`artistslanguage["${id}"].specialties must be an object with en/zh/ja arrays.`);
+      continue;
+    }
+
+    for (const lang of LANGS) {
+      if (!Array.isArray(specialties[lang])) {
+        errors.push(`artistslanguage["${id}"].specialties.${lang} must be an array.`);
+        continue;
+      }
+
+      specialties[lang].forEach((value, idx) => {
+        if (!isNonEmptyString(value)) {
+          errors.push(`artistslanguage["${id}"].specialties.${lang}[${idx}] must be a non-empty string.`);
+        }
+      });
+    }
+  }
+
+  for (const id of Object.keys(artistsLanguage)) {
+    if (!artistIds.has(id)) {
+      warnings.push(`artistslanguage contains unused artist id: "${id}"`);
+    }
+  }
+}
+
 function printReport() {
   console.log("Content validation report");
   console.log("========================");
@@ -284,6 +484,8 @@ function printReport() {
 
 function main() {
   const indexHtml = readText(INDEX_PATH);
+  const artists = readJson(ARTISTS_PATH);
+  const artistsLanguage = readJson(ARTISTS_LANG_PATH);
   const stories = readJson(STORIES_PATH);
   const storiesLanguage = readJson(STORIES_LANG_PATH);
   const i18n = readJson(I18N_PATH);
@@ -294,6 +496,10 @@ function main() {
   }
 
   const storyIds = validateStories(stories);
+  const artistIds = validateArtists(artists, storyIds || new Set());
+  if (artistIds) {
+    validateArtistsLanguage(artistsLanguage, artistIds);
+  }
   if (storyIds) {
     validateStoriesLanguage(storiesLanguage, storyIds);
   }
