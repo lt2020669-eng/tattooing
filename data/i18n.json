@@ -27,9 +27,9 @@
     "ja": "5cm 以内"
   },
   "price_item_1_body": {
-    "en": "20,000 JPY",
-    "zh": "20,000 日元",
-    "ja": "20,000円"
+    "en": "21,999 JPY",
+    "zh": "21,999 日元",
+    "ja": "21,999円"
   },
   "price_item_2_title": {
     "en": "Up to 10cm",
@@ -37,9 +37,9 @@
     "ja": "10cm 以内"
   },
   "price_item_2_body": {
-    "en": "40,000 JPY",
-    "zh": "40,000 日元",
-    "ja": "40,000円"
+    "en": "41,999 JPY",
+    "zh": "41,999 日元",
+    "ja": "41,999円"
   },
   "price_item_3_title": {
     "en": "Over 10cm",
@@ -55,6 +55,31 @@
     "en": "If you are unsure about size or placement, feel free to book a consultation first.",
     "zh": "如果你还不确定尺寸或位置，欢迎先预约咨询。",
     "ja": "サイズや部位に迷っている場合も、まずはお気軽にご相談ください。"
+  },
+  "price_deposit_note": {
+    "en": "The prices above are total reference prices. Calendly collects a 12.59 USD deposit (about 1,999 JPY) to secure your appointment.",
+    "zh": "以上价格为总参考价格。Calendly 预约时会先收取 12.59 美元定金（约 1,999 日元）用于锁定时段。",
+    "ja": "上記の料金は合計の目安料金です。ご予約枠を確保するため、Calendly では 12.59 USD のデポジット（約 1,999 円）を先にお支払いいただきます。"
+  },
+  "price_balance_note": {
+    "en": "Your deposit is credited toward the final total. For example, a 21,999 JPY session usually leaves about 20,000 JPY to be paid in the studio after the tattoo is finished.",
+    "zh": "定金会抵扣最终总价。例如 21,999 日元的项目，在支付定金后，通常还有约 20,000 日元尾款于纹身结束后在店内支付。",
+    "ja": "デポジットは最終料金に充当されます。たとえば 21,999 円の施術では、デポジットお支払い後の残額は通常約 20,000 円となり、施術終了後に店頭でお支払いいただきます。"
+  },
+  "price_fx_note": {
+    "en": "The deposit is charged in USD, so the JPY amount is only an estimate. Your bank or payment provider determines the final converted amount.",
+    "zh": "定金以美元结算，因此日元金额仅为估算，最终换算金额以你的银行卡或支付平台结算结果为准。",
+    "ja": "デポジットは USD 建てで決済されるため、円換算額はあくまで目安です。最終的な換算金額はご利用のカード会社または決済サービスにより決まります。"
+  },
+  "price_questionnaire_note": {
+    "en": "After the deposit is paid, we will send a short questionnaire covering your preferences, whether you have your own design, whether you need design help, whether you are 18+, and what the tattoo means to you.",
+    "zh": "定金支付成功后，我们会发送一份简短问卷，了解你的喜好、是否自带图案、是否需要设计师协助、是否已满 18 岁，以及这次纹身对你的意义。",
+    "ja": "デポジットのお支払い完了後、好みの方向性、自前デザインの有無、デザイン補助の必要性、18歳以上かどうか、そして今回のタトゥーに込めたい意味などを伺う短いアンケートをお送りします。"
+  },
+  "price_policy_note": {
+    "en": "Paying the deposit reserves your time slot and means you agree to the booking terms shown on the Calendly checkout page, including any rescheduling or refund rules.",
+    "zh": "支付定金即表示你确认锁定该时段，并同意 Calendly 付款页展示的预约条款，其中包括改期与退款规则。",
+    "ja": "デポジットのお支払いをもって予約枠の確保となり、同時に Calendly の決済ページに表示される予約条件（変更・返金ルールを含む）に同意いただいたものとします。"
   },
   "price_cta": {
     "en": "Open Booking Page",
@@ -157,55 +182,55 @@
     "ja": "ご予約の流れ"
   },
   "process_subtitle": {
-    "en": "From booking to arrival, here is exactly what happens next so you know when to fill in your form, pay the deposit, and prepare for your session.",
-    "zh": "从预约到到店，以下是完整流程说明。你可以清楚知道什么时候填写问卷、什么时候支付定金，以及纹身当天会如何进行。",
-    "ja": "予約からご来店までの流れをまとめました。フォーム入力のタイミング、デポジットのお支払い時期、当日の進み方を事前にご確認いただけます。"
+    "en": "From booking to arrival, here is exactly what happens next: reserve your time with a deposit, receive your questionnaire after payment, and pay the remaining balance in the studio on the day of your session.",
+    "zh": "从预约到到店，以下是完整流程说明：先用定金锁定时间，支付成功后再发送问卷，纹身当天到店后在店内支付剩余金额。",
+    "ja": "予約からご来店までの流れをまとめました。先にデポジットで枠を確保し、お支払い完了後にアンケートをお送りし、施術当日に店頭で残額をお支払いいただく流れです。"
   },
   "process_step_1_title": {
-    "en": "1. Book a time",
-    "zh": "1. 选择预约时间",
-    "ja": "1. 日時を予約する"
+    "en": "1. Choose a time and pay the deposit",
+    "zh": "1. 选择时间并支付定金",
+    "ja": "1. 日時を選び、デポジットを支払う"
   },
   "process_step_1_body": {
-    "en": "Open our Calendly page, choose the time that suits you best, and complete the appointment booking first.",
-    "zh": "先打开我们的 Calendly 预约页，选择最适合你的时间并完成预约。",
-    "ja": "まず Calendly の予約ページを開き、ご都合のよい日時を選んで予約を完了してください。"
+    "en": "Open our Calendly page, choose the time that suits you best, and pay the 12.59 USD deposit (about 1,999 JPY) to secure your appointment.",
+    "zh": "打开我们的 Calendly 预约页，选择最适合你的时间，并支付 12.59 美元定金（约 1,999 日元）来锁定预约。",
+    "ja": "Calendly の予約ページでご都合のよい日時を選び、12.59 USD のデポジット（約 1,999 円）をお支払いいただくと、ご予約枠が確保されます。"
   },
   "process_step_2_title": {
-    "en": "2. Complete the pre-tattoo form",
-    "zh": "2. 填写术前问卷",
-    "ja": "2. 施術前フォームに記入する"
+    "en": "2. Receive and complete the questionnaire",
+    "zh": "2. 收到并填写问卷",
+    "ja": "2. アンケートを受け取り、記入する"
   },
   "process_step_2_body": {
-    "en": "After booking, you will be guided to a short pre-tattoo form so we can understand your design idea, health notes, and communication needs.",
-    "zh": "预约完成后，你会进入一个简短的术前问卷，帮助我们了解你的设计想法、身体状况和沟通需求。",
-    "ja": "予約完了後、短い施術前フォームへ進みます。デザインの方向性、体調面の注意点、コミュニケーションのご希望を事前に把握するためです。"
+    "en": "After the deposit is paid, we will send a short questionnaire to learn your preferences, whether you have your own design, whether you need design help, whether you are 18+, and what the tattoo means to you.",
+    "zh": "定金支付成功后，我们会发送一份简短问卷，了解你的喜好、是否自带图案、是否需要设计师协助、是否已满 18 岁，以及这次纹身对你的意义。",
+    "ja": "デポジットのお支払い完了後、好みの方向性、自前デザインの有無、デザイン補助の必要性、18歳以上かどうか、そして今回のタトゥーに込めたい意味を伺う短いアンケートをお送りします。"
   },
   "process_step_3_title": {
-    "en": "3. Pay the deposit",
-    "zh": "3. 支付定金",
-    "ja": "3. デポジットを支払う"
+    "en": "3. Confirm the plan before your session",
+    "zh": "3. 在到店前确认方案",
+    "ja": "3. ご来店前に内容を確認する"
   },
   "process_step_3_body": {
-    "en": "Once the form is completed, you will receive the Stripe payment step. A 1100 JPY deposit is required to confirm your appointment.",
-    "zh": "问卷填写完成后，会进入 Stripe 支付步骤。支付 1100 日元定金后，你的预约才算正式确认。",
-    "ja": "フォーム入力後、Stripe でのお支払い手順へ進みます。1100円のデポジットのお支払いをもって、ご予約確定となります。"
+    "en": "We review your answers before the session and follow up if anything needs clarification, design support, or adjustment so your appointment is prepared in advance.",
+    "zh": "我们会在到店前查看你的问卷内容；如果有需要补充说明、协助设计或调整的地方，会提前与你确认，让预约在到店前准备好。",
+    "ja": "ご来店前にアンケート内容を確認し、追加のご説明、デザイン補助、または調整が必要な場合は事前にご連絡します。当日に向けて予約内容を整えておくためです。"
   },
   "process_step_4_title": {
-    "en": "4. Arrive for your session",
-    "zh": "4. 按预约时间到店",
-    "ja": "4. 予約時間にご来店"
+    "en": "4. Come in and pay the balance",
+    "zh": "4. 到店施作并支付尾款",
+    "ja": "4. ご来店・施術後に残額を支払う"
   },
   "process_step_4_body": {
-    "en": "On the day of your tattoo, we will review the placement and final details with you before starting the session.",
-    "zh": "纹身当天按预约时间到店，我们会先和你确认位置与最后细节，再开始施作。",
-    "ja": "当日はご予約時間にご来店ください。施術前に位置や最終ディテールを確認してから施術を開始します。"
+    "en": "On the day of your tattoo, we confirm the placement and final details, complete the session, and the remaining balance is paid in the studio after the tattoo is finished.",
+    "zh": "纹身当天按预约时间到店，我们会先确认位置与最后细节，施作完成后在店内支付剩余金额。",
+    "ja": "当日はご予約時間にご来店いただき、位置や最終ディテールを確認してから施術を行います。残額は施術終了後に店頭でお支払いいただきます。"
   },
   "booking_title": { "en": "booking", "zh": "预定", "ja": "予約" },
   "booking_pre_note": {
-    "en": "Before booking, please review the care notes above and let us know if you have any special concerns.",
-    "zh": "预约前请先阅读上方注意事项，如有特殊情况也欢迎提前告诉我们。",
-    "ja": "ご予約前に上記のご案内をご確認いただき、ご不安な点があれば事前にお知らせください。"
+    "en": "Before booking, please review the pricing and care notes above. After the deposit is paid, we will send your questionnaire.",
+    "zh": "预约前请先阅读上方价格说明与注意事项。定金支付成功后，我们会发送问卷。",
+    "ja": "ご予約前に上記の料金説明と注意事項をご確認ください。デポジットのお支払い完了後、アンケートをお送りします。"
   },
   "booking_embed_note": {
     "en": "Open our booking page to view live availability and choose the session that fits you best.",
@@ -213,9 +238,9 @@
     "ja": "予約ページを開いて空き状況を確認し、ご希望に合うセッションをお選びください。"
   },
   "booking_open_note": {
-    "en": "You will be taken to our secure booking page in a new tab, where you can review availability and confirm your appointment.",
-    "zh": "点击后会在新标签页打开预约页面，你可以在那里查看可约时间并完成预约确认。",
-    "ja": "クリックすると新しいタブで予約ページが開き、空き状況の確認と予約確定を行えます。"
+    "en": "You will be taken to our secure booking page in a new tab, where you can choose a time, pay the deposit, and review the booking terms before confirming.",
+    "zh": "点击后会在新标签页打开预约页面，你可以在那里选择时间、支付定金，并在确认前查看预约条款。",
+    "ja": "クリックすると新しいタブで予約ページが開き、日時の選択、デポジットのお支払い、予約条件の確認を行えます。"
   },
   "booking_open_cta": {
     "en": "Open Booking Page",
