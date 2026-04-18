@@ -1,7 +1,6 @@
 [
   { "id": "be-yourself", "category": "character", "featured": true, "img": "image/Character/自分らしく生きたい.jpg", "modal_object_position": "center 78%" },
   { "id": "swallows-introspective-life-stream", "category": "life", "featured": false, "img": "image/Life/FWildGeese.jpg", "modal_object_position": "center 78%" },
-  { "id": "fox", "category": "other", "featured": true, "img": "image/Other/Fox.jpg" },
   { "id": "echoed-scar", "category": "life", "featured": false, "img": "image/Life/FatherSilentPromise.jpg" },
   { "id": "blooming-from-the-scar", "category": "life", "featured": true, "img": "image/Life/Scar.jpg" },
   { "id": "love-without-shackles", "category": "life", "featured": false, "img": "image/Life/Love.png" },

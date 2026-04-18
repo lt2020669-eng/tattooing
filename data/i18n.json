@@ -222,9 +222,9 @@
     "ja": "4. ご来店・施術後に残額を支払う"
   },
   "process_step_4_body": {
-    "en": "On the day of your tattoo, we confirm the placement and final details, complete the session, and the remaining balance is paid in the studio after the tattoo is finished.",
-    "zh": "纹身当天按预约时间到店，我们会先确认位置与最后细节，施作完成后在店内支付剩余金额。",
-    "ja": "当日はご予約時間にご来店いただき、位置や最終ディテールを確認してから施術を行います。残額は施術終了後に店頭でお支払いいただきます。"
+    "en": "On the day of your tattoo, we confirm the placement and final details, complete the session, and the remaining balance is paid in the studio after the tattoo is finished. As a reference, a tattoo around 4cm usually takes about 2 hours, and a tattoo up to 10cm usually takes around 4 hours. Actual duration may vary based on design complexity, placement, and skin condition.",
+    "zh": "纹身当天按预约时间到店，我们会先确认位置与最后细节，施作完成后在店内支付剩余金额。参考时长方面，约 4cm 的纹身通常约 2 小时，10cm 以内的纹身通常约 4 小时。实际时长会因图案复杂度、部位与皮肤状态而有所不同。",
+    "ja": "当日はご予約時間にご来店いただき、位置や最終ディテールを確認してから施術を行います。残額は施術終了後に店頭でお支払いいただきます。目安として、約4cmのタトゥーは通常約2時間、10cm以内のタトゥーは通常約4時間です。実際の所要時間はデザインの複雑さ、部位、肌の状態によって変動します。"
   },
   "booking_title": { "en": "booking", "zh": "预定", "ja": "予約" },
   "booking_pre_note": {
